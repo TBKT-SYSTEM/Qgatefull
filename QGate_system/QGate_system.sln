@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.34031.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QGate_system", "QGate_system\QGate_system.csproj", "{CE0E25DE-4027-4422-913E-2B31FDC9A073}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Qgatesys", "Qgatesys\Qgatesys.vdproj", "{AD31DEB7-9C00-4179-B87B-109D0D440D76}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0C7AAC1D-5008-43D1-98EA-25BEC2B508A7}"
+	ProjectSection(SolutionItems) = preProject
+		image\3.png = image\3.png
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE0E25DE-4027-4422-913E-2B31FDC9A073}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE0E25DE-4027-4422-913E-2B31FDC9A073}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE0E25DE-4027-4422-913E-2B31FDC9A073}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE0E25DE-4027-4422-913E-2B31FDC9A073}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD31DEB7-9C00-4179-B87B-109D0D440D76}.Debug|Any CPU.ActiveCfg = Debug
+		{AD31DEB7-9C00-4179-B87B-109D0D440D76}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0EAFCA2A-C334-4BB2-A661-ADC01BE31886}
+	EndGlobalSection
+EndGlobal
