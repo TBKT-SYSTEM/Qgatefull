@@ -30,10 +30,10 @@ namespace QGate_system
         private void InitializeComponent()
         {
             this.tbAddUser = new System.Windows.Forms.TextBox();
-            this.pbUser = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pbUser)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.pbAddUser = new System.Windows.Forms.PictureBox();
+            this.pbCancelAdd = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAddUser)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCancelAdd)).BeginInit();
             this.SuspendLayout();
             // 
             // tbAddUser
@@ -47,25 +47,25 @@ namespace QGate_system
             this.tbAddUser.TabIndex = 0;
             this.tbAddUser.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // pbUser
+            // pbAddUser
             // 
-            this.pbUser.BackColor = System.Drawing.Color.Transparent;
-            this.pbUser.Location = new System.Drawing.Point(122, 135);
-            this.pbUser.Name = "pbUser";
-            this.pbUser.Size = new System.Drawing.Size(94, 53);
-            this.pbUser.TabIndex = 1;
-            this.pbUser.TabStop = false;
-            this.pbUser.Click += new System.EventHandler(this.pbUser_Click);
+            this.pbAddUser.BackColor = System.Drawing.Color.Transparent;
+            this.pbAddUser.Location = new System.Drawing.Point(122, 135);
+            this.pbAddUser.Name = "pbAddUser";
+            this.pbAddUser.Size = new System.Drawing.Size(94, 53);
+            this.pbAddUser.TabIndex = 1;
+            this.pbAddUser.TabStop = false;
+            this.pbAddUser.Click += new System.EventHandler(this.pbAddUser_Click);
             // 
-            // pictureBox2
+            // pbCancelAdd
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Location = new System.Drawing.Point(255, 135);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(94, 53);
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.pbCancelAdd.BackColor = System.Drawing.Color.Transparent;
+            this.pbCancelAdd.Location = new System.Drawing.Point(255, 135);
+            this.pbCancelAdd.Name = "pbCancelAdd";
+            this.pbCancelAdd.Size = new System.Drawing.Size(94, 53);
+            this.pbCancelAdd.TabIndex = 2;
+            this.pbCancelAdd.TabStop = false;
+            this.pbCancelAdd.Click += new System.EventHandler(this.pbCancelAdd_Click);
             // 
             // qgateAddUser
             // 
@@ -75,16 +75,16 @@ namespace QGate_system
             this.BackgroundImage = global::QGate_system.Properties.Resources.Popup1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(470, 230);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pbUser);
+            this.Controls.Add(this.pbCancelAdd);
+            this.Controls.Add(this.pbAddUser);
             this.Controls.Add(this.tbAddUser);
             this.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "qgateAddUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "qgateAddUser";
-            ((System.ComponentModel.ISupportInitialize)(this.pbUser)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAddUser)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCancelAdd)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -93,7 +93,7 @@ namespace QGate_system
         #endregion
 
         private System.Windows.Forms.TextBox tbAddUser;
-        private System.Windows.Forms.PictureBox pbUser;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pbAddUser;
+        private System.Windows.Forms.PictureBox pbCancelAdd;
     }
 }

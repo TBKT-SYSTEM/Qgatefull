@@ -70,7 +70,16 @@ namespace QGate_system
 
                             if (dataChkLogin.mad_alias == "success-login")
                             {
+                                var dataUserLogin = new
+                                {
+                                    PathPic = "http://192.168.161.207/tbkk_shopfloor/asset/img_emp/"+ dataChkLogin.emp_code +".jpg",
+                                    EmpCode = dataChkLogin.emp_code,
+                                    NameUser = dataChkLogin.emp_name
+                                };
+
+                                formSelectMenu.UserLogin = dataUserLogin;
                                 formSelectMenu.Show();
+
                                 this.Hide();
                             }
                             else if (dataChkLogin.result == 0)
@@ -116,7 +125,8 @@ namespace QGate_system
 
         private async void qgateLogin_Load(object sender, EventArgs e)
         {
-            
+            Console.WriteLine(macAddress);
+
             var data = new
             {
                 macAddress = macAddress

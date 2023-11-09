@@ -35,9 +35,15 @@ namespace QGate_system
             this.flpMenu = new System.Windows.Forms.FlowLayoutPanel();
             this.pbAddUser = new System.Windows.Forms.PictureBox();
             this.pbMinusUser = new System.Windows.Forms.PictureBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpUser = new System.Windows.Forms.FlowLayoutPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbScrollUp = new System.Windows.Forms.PictureBox();
+            this.pbScrollDown = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbAddUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinusUser)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbScrollUp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbScrollDown)).BeginInit();
             this.SuspendLayout();
             // 
             // lbZone
@@ -48,6 +54,7 @@ namespace QGate_system
             this.lbZone.Name = "lbZone";
             this.lbZone.Size = new System.Drawing.Size(151, 23);
             this.lbZone.TabIndex = 0;
+            this.lbZone.Click += new System.EventHandler(this.lbZone_Click);
             // 
             // lbStation
             // 
@@ -94,23 +101,64 @@ namespace QGate_system
             this.pbMinusUser.Size = new System.Drawing.Size(182, 69);
             this.pbMinusUser.TabIndex = 8;
             this.pbMinusUser.TabStop = false;
+            this.pbMinusUser.Click += new System.EventHandler(this.pbMinusUser_Click);
             // 
-            // flowLayoutPanel1
+            // flpUser
             // 
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(30, 160);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(182, 272);
-            this.flowLayoutPanel1.TabIndex = 9;
+            this.flpUser.AutoScroll = true;
+            this.flpUser.BackColor = System.Drawing.Color.Transparent;
+            this.flpUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.flpUser.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flpUser.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.flpUser.Location = new System.Drawing.Point(30, 160);
+            this.flpUser.Name = "flpUser";
+            this.flpUser.Size = new System.Drawing.Size(204, 272);
+            this.flpUser.TabIndex = 9;
+            this.flpUser.WrapContents = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Location = new System.Drawing.Point(210, 160);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(35, 272);
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pbScrollUp
+            // 
+            this.pbScrollUp.BackgroundImage = global::QGate_system.Properties.Resources.ScrollUp;
+            this.pbScrollUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbScrollUp.Location = new System.Drawing.Point(219, 222);
+            this.pbScrollUp.Name = "pbScrollUp";
+            this.pbScrollUp.Size = new System.Drawing.Size(58, 64);
+            this.pbScrollUp.TabIndex = 14;
+            this.pbScrollUp.TabStop = false;
+            this.pbScrollUp.Click += new System.EventHandler(this.pbScrollUp_Click);
+            // 
+            // pbScrollDown
+            // 
+            this.pbScrollDown.BackgroundImage = global::QGate_system.Properties.Resources.ScrollDown1;
+            this.pbScrollDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbScrollDown.Location = new System.Drawing.Point(219, 306);
+            this.pbScrollDown.Name = "pbScrollDown";
+            this.pbScrollDown.Size = new System.Drawing.Size(58, 64);
+            this.pbScrollDown.TabIndex = 15;
+            this.pbScrollDown.TabStop = false;
+            this.pbScrollDown.Click += new System.EventHandler(this.pbScrollDown_Click);
             // 
             // qgateSelectMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackgroundImage = global::QGate_system.Properties.Resources.Menu;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 600);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.pbScrollDown);
+            this.Controls.Add(this.pbScrollUp);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.flpUser);
             this.Controls.Add(this.pbMinusUser);
             this.Controls.Add(this.pbAddUser);
             this.Controls.Add(this.flpMenu);
@@ -125,6 +173,9 @@ namespace QGate_system
             this.Load += new System.EventHandler(this.qgateSelectMenu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbAddUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinusUser)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbScrollUp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbScrollDown)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -137,6 +188,9 @@ namespace QGate_system
         private System.Windows.Forms.FlowLayoutPanel flpMenu;
         private System.Windows.Forms.PictureBox pbAddUser;
         private System.Windows.Forms.PictureBox pbMinusUser;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flpUser;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbScrollUp;
+        private System.Windows.Forms.PictureBox pbScrollDown;
     }
 }

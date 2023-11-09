@@ -62,6 +62,9 @@ namespace QGate_system
             lbmessage.Text = MessageRequert;
             lbmessage.TextAlign = ContentAlignment.MiddleCenter;
         }
+
+        
+
     }
 }
 

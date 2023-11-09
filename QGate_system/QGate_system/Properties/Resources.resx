@@ -133,6 +133,9 @@
   <data name="Popup" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Popup.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ScrollUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ScrollUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="SettingStation1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SettingStation1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -157,10 +160,16 @@
   <data name="Btn-MenuAdmin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Btn-MenuAdmin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Popup1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Popup1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Login_Admin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Login_Admin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Popup1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Popup1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ScrollDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ScrollDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ScrollDown1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ScrollDown1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

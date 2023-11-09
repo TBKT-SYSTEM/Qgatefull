@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API.cs" />
+    <Compile Include="memberData.cs" />
     <Compile Include="MenuItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -238,6 +239,9 @@
   <ItemGroup>
     <Content Include="3-_3_.ico" />
     <Content Include="icon.ico" />
+    <None Include="Resources\ScrollDown1.png" />
+    <None Include="Resources\ScrollDown.png" />
+    <None Include="Resources\ScrollUp.png" />
     <None Include="Resources\Popup1.png" />
     <None Include="Resources\Popup-NoText1.png" />
     <None Include="Resources\start11.png" />
@@ -253,6 +257,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\NewFolder1\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

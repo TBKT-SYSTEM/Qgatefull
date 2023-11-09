@@ -14,31 +14,83 @@ namespace QGate_system
     public partial class qgateAddUser : Form
     {
         QGate_system.API.API api = new QGate_system.API.API();
+        qgateAlert formAlret = new qgateAlert();
+        memberData memberData = new memberData();
+
 
         public qgateAddUser()
         {
             InitializeComponent();
         }
 
-        private async void pbUser_Click(object sender, EventArgs e)
+        private async void pbAddUser_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(tbAddUser.Text);
+            //Console.WriteLine(tbAddUser.Text);
+            string dataUser = tbAddUser.Text;
 
             var data = new
             {
                 EmpCode = tbAddUser.Text
             };
-            var jsonDataPermis = JsonConvert.SerializeObject(data);
-            var resultResponse = await api.CurPostRequestAsync("Login/menuPremis/", jsonDataPermis);
-            dynamic dataMenubypermis = JsonConvert.DeserializeObject(resultResponse);
 
-            Console.WriteLine("get data user : "+dataMenubypermis);
+            var jsonDataPermis = JsonConvert.SerializeObject(data);
+            var resultResponse = await api.CurPostRequestAsync("Login/chk_login/", jsonDataPermis);
+            
+
+            if (!string.IsNullOrEmpty(resultResponse))
+            {
+                dynamic dataUserResponse = JsonConvert.DeserializeObject(resultResponse);
+
+                if (dataUserResponse.mad_alias == "success-login")
+                {
+                    var dataUserLogin = new
+                    {
+                        PathPic = "http://192.168.161.207/tbkk_shopfloor/asset/img_emp/" + dataUserResponse.emp_code + ".jpg",
+                        EmpCode = dataUserResponse.emp_code,
+                        NameUser = dataUserResponse.emp_name
+                    };
+                    string emp_code = dataUserResponse.emp_code;
+
+                    if (memberData.chk_RepeatMember(emp_code))
+                    {
+                        MessageBox.Show("You have scanned this employee.");
+                    }
+                    else
+                    {
+                        var memberArr = new string[2] { dataUserResponse.emp_code, dataUserResponse.emp_name };
+
+                        memberData.memberList.Add(memberArr);
+                        memberData.populateItems();
+
+                    }
+                    
+                    tbAddUser.Clear();
+                    this.Hide();
+                }
+                else if (dataUserResponse.result == 0)
+                {
+                    MessageBox.Show("The system has a problem");
+                }
+                else
+                {
+                    string pathPic = dataUserResponse.mat_path;
+
+                    formAlret.MessageRequert = dataUserResponse.message;
+                    formAlret.PathPicRequert = api.LoadPicture(pathPic);
+                    formAlret.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Empty or invalid response");
+            }
 
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void pbCancelAdd_Click(object sender, EventArgs e)
         {
             this.Hide();
         }
+
     }
 }

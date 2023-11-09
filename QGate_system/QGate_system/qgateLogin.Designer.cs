@@ -40,7 +40,7 @@ namespace QGate_system
             this.tbLoginUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbLoginUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbLoginUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
-            this.tbLoginUser.Location = new System.Drawing.Point(169, 347);
+            this.tbLoginUser.Location = new System.Drawing.Point(135, 377);
             this.tbLoginUser.Name = "tbLoginUser";
             this.tbLoginUser.Size = new System.Drawing.Size(284, 48);
             this.tbLoginUser.TabIndex = 0;
