@@ -199,10 +199,6 @@ namespace QGate_system
             flpUser.AutoScrollPosition = new Point(0, change);
         }
 
-        private void lbZone_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 
 

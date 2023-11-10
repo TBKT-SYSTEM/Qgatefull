@@ -48,22 +48,27 @@ namespace QGate_system
             // 
             // lbZone
             // 
+            this.lbZone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbZone.BackColor = System.Drawing.Color.Transparent;
             this.lbZone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbZone.Location = new System.Drawing.Point(461, 48);
+            this.lbZone.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.lbZone.Location = new System.Drawing.Point(457, 48);
             this.lbZone.Name = "lbZone";
-            this.lbZone.Size = new System.Drawing.Size(151, 23);
+            this.lbZone.Size = new System.Drawing.Size(148, 23);
             this.lbZone.TabIndex = 0;
-            this.lbZone.Click += new System.EventHandler(this.lbZone_Click);
+            this.lbZone.Text = "XX";
             // 
             // lbStation
             // 
+            this.lbStation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbStation.BackColor = System.Drawing.Color.Transparent;
             this.lbStation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbStation.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.lbStation.Location = new System.Drawing.Point(733, 48);
             this.lbStation.Name = "lbStation";
-            this.lbStation.Size = new System.Drawing.Size(55, 23);
+            this.lbStation.Size = new System.Drawing.Size(49, 23);
             this.lbStation.TabIndex = 1;
+            this.lbStation.Text = "X";
             // 
             // label1
             // 
