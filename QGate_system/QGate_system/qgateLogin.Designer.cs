@@ -38,11 +38,12 @@ namespace QGate_system
             // tbLoginUser
             // 
             this.tbLoginUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbLoginUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbLoginUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbLoginUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
-            this.tbLoginUser.Location = new System.Drawing.Point(135, 377);
+            this.tbLoginUser.Location = new System.Drawing.Point(131, 379);
+            this.tbLoginUser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbLoginUser.Name = "tbLoginUser";
-            this.tbLoginUser.Size = new System.Drawing.Size(284, 48);
+            this.tbLoginUser.Size = new System.Drawing.Size(286, 42);
             this.tbLoginUser.TabIndex = 0;
             this.tbLoginUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbLoginUser_KeyDown);
             // 
@@ -50,9 +51,10 @@ namespace QGate_system
             // 
             this.lbConfig.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbConfig.BackColor = System.Drawing.Color.Transparent;
-            this.lbConfig.Location = new System.Drawing.Point(706, 0);
+            this.lbConfig.Location = new System.Drawing.Point(699, 0);
+            this.lbConfig.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbConfig.Name = "lbConfig";
-            this.lbConfig.Size = new System.Drawing.Size(92, 77);
+            this.lbConfig.Size = new System.Drawing.Size(100, 87);
             this.lbConfig.TabIndex = 1;
             this.lbConfig.Click += new System.EventHandler(this.pbConfig_Click);
             // 
@@ -60,16 +62,17 @@ namespace QGate_system
             // 
             this.lbExitApp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbExitApp.BackColor = System.Drawing.Color.Transparent;
-            this.lbExitApp.Location = new System.Drawing.Point(634, 509);
+            this.lbExitApp.Location = new System.Drawing.Point(624, 510);
+            this.lbExitApp.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbExitApp.Name = "lbExitApp";
-            this.lbExitApp.Size = new System.Drawing.Size(154, 73);
+            this.lbExitApp.Size = new System.Drawing.Size(165, 81);
             this.lbExitApp.TabIndex = 2;
             this.lbExitApp.Text = " ";
             this.lbExitApp.Click += new System.EventHandler(this.lbexit_Click);
             // 
             // qgateLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -79,6 +82,9 @@ namespace QGate_system
             this.Controls.Add(this.tbLoginUser);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "qgateLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " LoginUser";

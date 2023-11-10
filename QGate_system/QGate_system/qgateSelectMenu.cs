@@ -86,13 +86,6 @@ namespace QGate_system
             flpUser.Refresh();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-            qgateLogin formLogin = new qgateLogin();
-            formLogin.Show();
-
-            this.Hide();
-        }
 
         private async void qgateSelectMenu_Load(object sender, EventArgs e)
         {
@@ -194,11 +187,18 @@ namespace QGate_system
 
         private void pbScrollDown_Click(object sender, EventArgs e)
         {
-
+             
             int change = flpUser.VerticalScroll.Value + flpUser.VerticalScroll.SmallChange * 30;
             flpUser.AutoScrollPosition = new Point(0, change);
         }
 
+        private void pbLogout_Click(object sender, EventArgs e)
+        {
+            qgateLogin formLogin = new qgateLogin();
+            formLogin.Show();
+
+            this.Hide();
+        }
     }
 
 

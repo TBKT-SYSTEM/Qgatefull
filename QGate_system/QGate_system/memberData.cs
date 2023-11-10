@@ -68,23 +68,7 @@ namespace QGate_system
             }
         }
 
-        public static Bitmap LoadPicture(string url)
-        {
-            try
-            {
-                System.Net.WebRequest request = System.Net.WebRequest.Create(url);
-                System.Net.WebResponse response = request.GetResponse();
-
-                System.IO.Stream responseStream = response.GetResponseStream();
-                Bitmap bitmap2 = new Bitmap(responseStream);
-
-                return bitmap2;
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
-        }
+       
 
 
 

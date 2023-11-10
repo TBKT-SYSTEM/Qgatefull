@@ -38,9 +38,10 @@ namespace QGate_system
             this.lbBackToLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbBackToLogin.BackColor = System.Drawing.Color.Transparent;
             this.lbBackToLogin.ForeColor = System.Drawing.Color.Transparent;
-            this.lbBackToLogin.Location = new System.Drawing.Point(24, 517);
+            this.lbBackToLogin.Location = new System.Drawing.Point(25, 509);
+            this.lbBackToLogin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbBackToLogin.Name = "lbBackToLogin";
-            this.lbBackToLogin.Size = new System.Drawing.Size(151, 74);
+            this.lbBackToLogin.Size = new System.Drawing.Size(162, 82);
             this.lbBackToLogin.TabIndex = 1;
             this.lbBackToLogin.Click += new System.EventHandler(this.pbBackToLogin_Click);
             // 
@@ -48,16 +49,17 @@ namespace QGate_system
             // 
             this.tbLoginAdmin.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbLoginAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.2F);
-            this.tbLoginAdmin.Location = new System.Drawing.Point(458, 321);
+            this.tbLoginAdmin.Location = new System.Drawing.Point(458, 320);
+            this.tbLoginAdmin.Margin = new System.Windows.Forms.Padding(2);
             this.tbLoginAdmin.Multiline = true;
             this.tbLoginAdmin.Name = "tbLoginAdmin";
-            this.tbLoginAdmin.Size = new System.Drawing.Size(285, 46);
+            this.tbLoginAdmin.Size = new System.Drawing.Size(285, 47);
             this.tbLoginAdmin.TabIndex = 2;
             this.tbLoginAdmin.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbLoginAdmin_KeyDown);
             // 
             // qgateLoginAdmin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::QGate_system.Properties.Resources.Login_Admin;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -67,6 +69,7 @@ namespace QGate_system
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "qgateLoginAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginAdmin";
