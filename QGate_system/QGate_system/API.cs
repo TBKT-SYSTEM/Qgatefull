@@ -15,7 +15,7 @@ namespace QGate_system.API
 {
     public class API
     {
-        public static string baseUrl = "http://172.21.64.147:1000/";
+        public static string baseUrl = "http://192.168.161.77:8999/";
         public async Task<string> CurPostRequestAsync(string endpoint, string jsonData)
         {
             try
@@ -132,9 +132,6 @@ namespace QGate_system.API
             }
         }
     }
-
-
-
 
 }
 

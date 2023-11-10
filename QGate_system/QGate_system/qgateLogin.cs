@@ -125,25 +125,30 @@ namespace QGate_system
 
         private async void qgateLogin_Load(object sender, EventArgs e)
         {
-            Console.WriteLine(macAddress);
-
-            var data = new
+            try
             {
-                macAddress = macAddress
-            };
+                var data = new
+                {
+                    macAddress = macAddress
+                };
 
-            var jsonData = JsonConvert.SerializeObject(data);
-            var resultResponse = await api.CurPostRequestAsync("Login/chk_macAddress/", jsonData);
-            dataSetting = JsonConvert.DeserializeObject(resultResponse);
+                var jsonData = JsonConvert.SerializeObject(data);
+                var resultResponse = await api.CurPostRequestAsync("Login/chk_macAddress/", jsonData);
+                dataSetting = JsonConvert.DeserializeObject(resultResponse);
 
-            formSelectMenu.SettingZone = dataSetting.mza_name;
-            formSelectMenu.SettingStation = dataSetting.msa_station;
+                formSelectMenu.SettingZone = dataSetting.mza_name;
+                formSelectMenu.SettingStation = dataSetting.msa_station;
 
-            var resultResponsePart = await api.CurPostRequestAsync("Login/get_part/", jsonData);
-            dynamic dataPartNO = JsonConvert.DeserializeObject(resultResponsePart);
+                var resultResponsePart = await api.CurPostRequestAsync("Login/get_part/", jsonData);
+                dynamic dataPartNO = JsonConvert.DeserializeObject(resultResponsePart);
 
-            myModel.DataPartNo = dataPartNO.Menu;
+                myModel.DataPartNo = dataPartNO.Menu;
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 
