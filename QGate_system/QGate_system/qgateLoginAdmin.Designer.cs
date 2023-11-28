@@ -29,6 +29,7 @@ namespace QGate_system
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(qgateLoginAdmin));
             this.lbBackToLogin = new System.Windows.Forms.Label();
             this.tbLoginAdmin = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -48,13 +49,14 @@ namespace QGate_system
             // tbLoginAdmin
             // 
             this.tbLoginAdmin.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbLoginAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.2F);
-            this.tbLoginAdmin.Location = new System.Drawing.Point(458, 320);
-            this.tbLoginAdmin.Margin = new System.Windows.Forms.Padding(2);
+            this.tbLoginAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbLoginAdmin.Location = new System.Drawing.Point(459, 323);
+            this.tbLoginAdmin.Margin = new System.Windows.Forms.Padding(0);
             this.tbLoginAdmin.Multiline = true;
             this.tbLoginAdmin.Name = "tbLoginAdmin";
-            this.tbLoginAdmin.Size = new System.Drawing.Size(285, 47);
+            this.tbLoginAdmin.Size = new System.Drawing.Size(258, 42);
             this.tbLoginAdmin.TabIndex = 2;
+            this.tbLoginAdmin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbLoginAdmin.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbLoginAdmin_KeyDown);
             // 
             // qgateLoginAdmin
@@ -69,6 +71,7 @@ namespace QGate_system
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "qgateLoginAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

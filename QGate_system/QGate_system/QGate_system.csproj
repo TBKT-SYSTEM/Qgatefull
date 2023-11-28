@@ -239,6 +239,8 @@
   <ItemGroup>
     <Content Include="3-_3_.ico" />
     <Content Include="icon.ico" />
+    <None Include="Resources\1.png" />
+    <None Include="Resources\2.png" />
     <None Include="Resources\ScrollDown1.png" />
     <None Include="Resources\ScrollDown.png" />
     <None Include="Resources\ScrollUp.png" />

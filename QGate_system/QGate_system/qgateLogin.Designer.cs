@@ -43,8 +43,9 @@ namespace QGate_system
             this.tbLoginUser.Location = new System.Drawing.Point(131, 379);
             this.tbLoginUser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbLoginUser.Name = "tbLoginUser";
-            this.tbLoginUser.Size = new System.Drawing.Size(286, 42);
+            this.tbLoginUser.Size = new System.Drawing.Size(254, 42);
             this.tbLoginUser.TabIndex = 0;
+            this.tbLoginUser.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbLoginUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbLoginUser_KeyDown);
             // 
             // lbConfig
@@ -82,9 +83,8 @@ namespace QGate_system
             this.Controls.Add(this.tbLoginUser);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "qgateLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " LoginUser";
@@ -95,10 +95,9 @@ namespace QGate_system
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox tbLoginUser;
         private System.Windows.Forms.Label lbConfig;
         private System.Windows.Forms.Label lbExitApp;
+        private System.Windows.Forms.TextBox tbLoginUser;
     }
 }
 

@@ -45,7 +45,7 @@ namespace QGate_system
             var result = await api.CurGetRequestAsync("MenuAdmin/get_Phase/");
             dynamic data = JsonConvert.DeserializeObject(result);
 
-            PhaseItem item_please = new PhaseItem(Convert.ToInt32(0), "โปรดระบุ");
+            PhaseItem item_please = new PhaseItem(Convert.ToInt32(0), "Choose Phase");
             cbSelectPhase.Items.Add(item_please);
             cbSelectPhase.SelectedIndex = 0;
 
@@ -103,7 +103,7 @@ namespace QGate_system
                 var result = await api.CurGetRequestAsync("MenuAdmin/get_Zone/");
                 dynamic data = JsonConvert.DeserializeObject(result);
 
-                ZoneItem item_please = new ZoneItem(Convert.ToInt32(0), "โปรดระบุ");
+                ZoneItem item_please = new ZoneItem(Convert.ToInt32(0), "Choose Zone");
                 cbSelectZone.Items.Add(item_please);
                 cbSelectZone.SelectedIndex = 0;
 
@@ -142,7 +142,7 @@ namespace QGate_system
                 var result = await api.CurGetRequestAsync("MenuAdmin/get_Station/");
                 dynamic data = JsonConvert.DeserializeObject(result);
 
-                StationItem item_please = new StationItem(Convert.ToInt32(0), "โปรดระบุ");
+                StationItem item_please = new StationItem(Convert.ToInt32(0), "Choose Station");
                 cbSelectStation.Items.Add(item_please);
                 cbSelectStation.SelectedIndex = 0;
 
@@ -168,32 +168,34 @@ namespace QGate_system
             }
         }
 
-        private void lbConfirm_Click(object sender, EventArgs e)
+        private async void lbConfirm_Click(object sender, EventArgs e)
         {
             PhaseItem selectedPhaseItem = (PhaseItem)cbSelectPhase.SelectedItem;
             ZoneItem selectedZoneItem = (ZoneItem)cbSelectZone.SelectedItem;
             StationItem selectedStationItem = (StationItem)cbSelectStation.SelectedItem;
 
-
-            string pathPic_Warning = "http://192.168.161.77/qgate_pic/AlertType/AlertWarning.png";
+            var result = await api.CurGetRequestAsync("Login/get_PathPic/");
+            dynamic pathPicWraing = JsonConvert.DeserializeObject(result);
+            string pathPic_Warning = pathPicWraing.Path;
+            
 
             if (selectedPhaseItem.mpa_id == 0)
             {
-                formAlret.MessageRequert = "กรุณาเลือก Phase";
+                formAlret.MessageRequert = "Please Select Phase";
                 formAlret.PathPicRequert = api.LoadPicture(pathPic_Warning);
                 formAlret.ShowDialog();
 
             }
             else if (selectedZoneItem.mza_id == 0)
             {
-                formAlret.MessageRequert = "กรุณาเลือก Zone";
+                formAlret.MessageRequert = "Please Select Zone";
                 formAlret.PathPicRequert = api.LoadPicture(pathPic_Warning);
                 formAlret.ShowDialog();
 
             }
             else if (selectedStationItem.msa_id == 0)
             {
-                formAlret.MessageRequert = "กรุณาเลือก Station";
+                formAlret.MessageRequert = "Please Select Station";
                 formAlret.PathPicRequert = api.LoadPicture(pathPic_Warning);
                 formAlret.ShowDialog();
             }

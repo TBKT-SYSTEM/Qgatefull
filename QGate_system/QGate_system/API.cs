@@ -115,11 +115,16 @@ namespace QGate_system.API
     {
         private static Session instance;
 
+        //Login Admin
         public string CurrentAdmin { get; set; }
+        public int LogloginAdmin { get; set; }
 
+
+        //Login
         public string PermisLogin { get; set; }
-        private Session() { }
+        public int Loglogin { get; set; }
 
+        private Session() { }
         public static Session Instance
         {
             get

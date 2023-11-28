@@ -43,4 +43,3 @@ C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_s
 C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.csproj.CopyComplete
 C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.exe
 C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.pdb
-C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.csproj.AssemblyReference.cache

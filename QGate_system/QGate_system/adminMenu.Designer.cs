@@ -36,21 +36,23 @@ namespace QGate_system
             // pbMenuAdmin
             // 
             this.pbMenuAdmin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pbMenuAdmin.Location = new System.Drawing.Point(8, 10);
+            this.pbMenuAdmin.Location = new System.Drawing.Point(6, 8);
+            this.pbMenuAdmin.Margin = new System.Windows.Forms.Padding(2);
             this.pbMenuAdmin.Name = "pbMenuAdmin";
-            this.pbMenuAdmin.Size = new System.Drawing.Size(351, 115);
+            this.pbMenuAdmin.Size = new System.Drawing.Size(264, 91);
             this.pbMenuAdmin.TabIndex = 0;
             this.pbMenuAdmin.TabStop = false;
             // 
             // adminMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.pbMenuAdmin);
             this.ForeColor = System.Drawing.Color.Transparent;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "adminMenu";
-            this.Size = new System.Drawing.Size(351, 115);
+            this.Size = new System.Drawing.Size(277, 108);
             ((System.ComponentModel.ISupportInitialize)(this.pbMenuAdmin)).EndInit();
             this.ResumeLayout(false);
 

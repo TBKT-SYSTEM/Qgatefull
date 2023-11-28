@@ -14,6 +14,7 @@ namespace QGate_system
     public partial class qgateMenuAdmin : Form
     {
         QGate_system.API.API api = new QGate_system.API.API();
+        QGate_system.API.Session Session = QGate_system.API.Session.Instance;
 
         public qgateMenuAdmin()
         {
@@ -42,8 +43,16 @@ namespace QGate_system
             }
         }
 
-        private void lbLogout_Click(object sender, EventArgs e)
+        private async void lbLogout_Click(object sender, EventArgs e)
         {
+            var data = new
+            {
+                logLogin_id = Session.LogloginAdmin
+            };
+
+            var jsonData = JsonConvert.SerializeObject(data);
+            var resultReponse = await api.CurPostRequestAsync("MenuAdmin/logout_Admin/", jsonData);
+
             qgateLoginAdmin formLoginMenu = new qgateLoginAdmin();
             formLoginMenu.Show();
 

@@ -29,6 +29,7 @@ namespace QGate_system
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(qgateSettingPosition));
             this.cbSelectPhase = new System.Windows.Forms.ComboBox();
             this.cbSelectZone = new System.Windows.Forms.ComboBox();
             this.cbSelectStation = new System.Windows.Forms.ComboBox();
@@ -48,7 +49,7 @@ namespace QGate_system
             this.cbSelectPhase.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.cbSelectPhase.ItemHeight = 33;
             this.cbSelectPhase.Location = new System.Drawing.Point(362, 243);
-            this.cbSelectPhase.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbSelectPhase.Margin = new System.Windows.Forms.Padding(2);
             this.cbSelectPhase.Name = "cbSelectPhase";
             this.cbSelectPhase.Size = new System.Drawing.Size(376, 41);
             this.cbSelectPhase.TabIndex = 0;
@@ -62,7 +63,7 @@ namespace QGate_system
             this.cbSelectZone.FormattingEnabled = true;
             this.cbSelectZone.ItemHeight = 33;
             this.cbSelectZone.Location = new System.Drawing.Point(362, 323);
-            this.cbSelectZone.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbSelectZone.Margin = new System.Windows.Forms.Padding(2);
             this.cbSelectZone.Name = "cbSelectZone";
             this.cbSelectZone.Size = new System.Drawing.Size(376, 41);
             this.cbSelectZone.TabIndex = 1;
@@ -76,7 +77,7 @@ namespace QGate_system
             this.cbSelectStation.FormattingEnabled = true;
             this.cbSelectStation.ItemHeight = 33;
             this.cbSelectStation.Location = new System.Drawing.Point(362, 406);
-            this.cbSelectStation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbSelectStation.Margin = new System.Windows.Forms.Padding(2);
             this.cbSelectStation.Name = "cbSelectStation";
             this.cbSelectStation.Size = new System.Drawing.Size(376, 41);
             this.cbSelectStation.TabIndex = 2;
@@ -116,7 +117,8 @@ namespace QGate_system
             this.Controls.Add(this.cbSelectPhase);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "qgateSettingPosition";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";

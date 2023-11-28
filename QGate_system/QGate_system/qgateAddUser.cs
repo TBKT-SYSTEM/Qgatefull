@@ -17,7 +17,6 @@ namespace QGate_system
         qgateAlert formAlret = new qgateAlert();
         memberData memberData = new memberData();
 
-
         public qgateAddUser()
         {
             InitializeComponent();
@@ -25,9 +24,6 @@ namespace QGate_system
 
         private async void pbAddUser_Click(object sender, EventArgs e)
         {
-            //Console.WriteLine(tbAddUser.Text);
-            string dataUser = tbAddUser.Text;
-
             var data = new
             {
                 EmpCode = tbAddUser.Text
@@ -53,7 +49,13 @@ namespace QGate_system
 
                     if (memberData.chk_RepeatMember(emp_code))
                     {
-                        MessageBox.Show("You have scanned this employee.");
+                        var result = await api.CurGetRequestAsync("Login/get_PathPic/");
+                        dynamic pathPicWraing = JsonConvert.DeserializeObject(result);
+                        string pathPic_Warning = pathPicWraing.Path;
+
+                        formAlret.MessageRequert = "You've scanned your employees.";
+                        formAlret.PathPicRequert = api.LoadPicture(pathPic_Warning);
+                        formAlret.ShowDialog();
                     }
                     else
                     {
@@ -61,7 +63,6 @@ namespace QGate_system
 
                         memberData.memberList.Add(memberArr);
                         memberData.populateItems();
-
                     }
                     
                     tbAddUser.Clear();
@@ -84,13 +85,14 @@ namespace QGate_system
             {
                 MessageBox.Show("Empty or invalid response");
             }
-
+            tbAddUser.Clear();
         }
 
         private void pbCancelAdd_Click(object sender, EventArgs e)
         {
             this.Hide();
         }
-
     }
 }
+
+

@@ -23,7 +23,7 @@ namespace QGate_system
         {
             InitializeComponent();
         }
-        private void pbBackToLogin_Click(object sender, EventArgs e)
+        private  void pbBackToLogin_Click(object sender, EventArgs e)
         {
             qgateLogin formLogin = new qgateLogin();
             formLogin.Show();
@@ -57,6 +57,10 @@ namespace QGate_system
 
                         if (dataReponse.mad_alias == "success-login")
                         {
+
+                            Session.LogloginAdmin = dataReponse.log_Login;
+                            //MessageBox.Show(dataReponse.log_Login.ToString());
+
                             Session.CurrentAdmin  = EmpCode;
                             qgateMenuAdmin formMenuAdmin = new qgateMenuAdmin();
                             formMenuAdmin.Show();
@@ -91,6 +95,5 @@ namespace QGate_system
             else { }
         }
 
-       
     }
 }

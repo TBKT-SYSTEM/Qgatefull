@@ -22,7 +22,6 @@ namespace QGate_system
         public FlowLayoutPanel flpUserInstance;
 
 
-
         private string _settingZone;
         public string SettingZone
         {
@@ -49,6 +48,8 @@ namespace QGate_system
             instance = this;
             flpUserInstance = flpUser;
 
+            this.flpScrollUp.Click += new System.EventHandler(this.flpScrollUp_Click);
+            this.flpScrollDown.Click += new System.EventHandler(this.flpScrollDown_Click);
         }
 
         private object _userLogin;
@@ -66,8 +67,7 @@ namespace QGate_system
             string userLoginJson = JsonConvert.SerializeObject(userControl); // แปลง UserLogin เป็น string
             dynamic datauser = JsonConvert.DeserializeObject(userLoginJson);
 
-            Console.WriteLine(datauser);
-
+            //Console.WriteLine(datauser);
 
             UserProfile[] userProfile = new UserProfile[1];
 
@@ -91,6 +91,7 @@ namespace QGate_system
         {
             lbZone.Text = SettingZone;
             lbStation.Text = SettingStation;
+
 
             var data = new
             {
@@ -117,56 +118,18 @@ namespace QGate_system
             dynamic datauser = JsonConvert.DeserializeObject(userLoginJson);
 
 
-            Console.WriteLine(datauser);
 
             var memberArr = new string[2] { datauser.EmpCode, datauser.NameUser };
             memberData.memberList.Add(memberArr);
 
             memberData memberDatas = new memberData();
             memberDatas.populateItems();
-
-            /*
-                        UserProfile[] userProfile = new UserProfile[1];
-
-                        for (int i = 0; i < userProfile.Length; i++)
-                        {
-                            userProfile[i] = new UserProfile();
-                            userProfile[i].PathPic = datauser.PathPic;
-                            userProfile[i].EmpCode = datauser.EmpCode;
-                            userProfile[i].NameUser = datauser.NameUser;
-
-                            flpUser.Controls.Add(userProfile[i]);
-                        }
-
-                        UserProfile listItems = new UserProfile();
-
-                        string url = $"http://192.168.161.207/tbkk_shopfloor/asset/img_emp/K0070.jpg";
-
-                        listItems = new UserProfile();
-                        listItems.PathPicRequert = api.LoadPicture(url);
-                        listItems.PathPic = url;
-                        listItems.EmpCode = "sttstst56";
-                        listItems.NameUser = "namemmmmmm";
-
-                        memberData memberData = new memberData();
-
-                        memberData.populateItems();*/
-
-
-            /**/
-            //dynamic test = JsonConvert.DeserializeObject(UserLogin);
-            //object userData = _userLogin;
-            //string test = userData.PathPic;
-            //Console.WriteLine("test :" + UserLogin.PathPic);
-
-
         }
 
         private void pbAddUser_Click(object sender, EventArgs e)
         {
             qgateAddUser formAddUser = new qgateAddUser();
             formAddUser.ShowDialog();
-
         }
 
         private void pbMinusUser_Click(object sender, EventArgs e)
@@ -177,28 +140,37 @@ namespace QGate_system
                 memberDatas.populateItems();
             }
         }
-       
-        private void pbScrollUp_Click(object sender, EventArgs e)
-        {
 
-            int change = flpUser.VerticalScroll.Value - flpUser.VerticalScroll.SmallChange * 30;
-            flpUser.AutoScrollPosition = new Point(0, change);
-        }
-
-        private void pbScrollDown_Click(object sender, EventArgs e)
+        private async void pbLogout_Click(object sender, EventArgs e)
         {
-             
-            int change = flpUser.VerticalScroll.Value + flpUser.VerticalScroll.SmallChange * 30;
-            flpUser.AutoScrollPosition = new Point(0, change);
-        }
+            memberData.memberList.Clear();
 
-        private void pbLogout_Click(object sender, EventArgs e)
-        {
+            var dataEmpCode = new
+            {
+                logLogin_id = Session.Loglogin
+            };
+
+            var jsonData = JsonConvert.SerializeObject(dataEmpCode);
+            var resultResponse = await api.CurPostRequestAsync("Login/logout/", jsonData);
+
             qgateLogin formLogin = new qgateLogin();
             formLogin.Show();
 
             this.Hide();
         }
+
+
+        private void flpScrollUp_Click(object sender, EventArgs e)
+        {
+            int change = flpUser.VerticalScroll.Value - flpUser.VerticalScroll.SmallChange * 30;
+            flpUser.AutoScrollPosition = new Point(0, change);
+        }
+        private void flpScrollDown_Click(object sender, EventArgs e)
+        {
+            int change = flpUser.VerticalScroll.Value + flpUser.VerticalScroll.SmallChange * 30;
+            flpUser.AutoScrollPosition = new Point(0, change);
+        }
+
     }
 
 

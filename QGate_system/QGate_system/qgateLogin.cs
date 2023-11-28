@@ -15,7 +15,7 @@ namespace QGate_system
     public partial class qgateLogin : Form
     {
         QGate_system.API.Session Session = QGate_system.API.Session.Instance;
-        model myModel = model.Instance;
+        model Model = model.Instance;
 
         qgateSettingPosition formSetting = new qgateSettingPosition();
         qgateSelectMenu formSelectMenu = new qgateSelectMenu();
@@ -26,10 +26,12 @@ namespace QGate_system
 
         public string macAddress;
 
+
         public qgateLogin()
         {
             InitializeComponent();
             macAddress = api.GetMacAddress();
+
         }
 
         private void lbexit_Click(object sender, EventArgs e)
@@ -65,11 +67,13 @@ namespace QGate_system
                         {
                             dynamic dataChkLogin = JsonConvert.DeserializeObject(resultResponseChkLogin);
 
-                            // set session
-                            Session.PermisLogin = dataChkLogin.data;
-
                             if (dataChkLogin.mad_alias == "success-login")
                             {
+                                // set session
+                                Session.PermisLogin = dataChkLogin.data;
+                                Session.Loglogin = dataChkLogin.log_Login;
+                                //MessageBox.Show(dataChkLogin.log_Login.ToString());
+
                                 var dataUserLogin = new
                                 {
                                     PathPic = "http://192.168.161.207/tbkk_shopfloor/asset/img_emp/"+ dataChkLogin.emp_code +".jpg",
@@ -119,6 +123,7 @@ namespace QGate_system
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                    Console.WriteLine(ex.Message);
                 }
             }
         }
@@ -142,7 +147,7 @@ namespace QGate_system
                 var resultResponsePart = await api.CurPostRequestAsync("Login/get_part/", jsonData);
                 dynamic dataPartNO = JsonConvert.DeserializeObject(resultResponsePart);
 
-                myModel.DataPartNo = dataPartNO.Menu;
+                Model.DataPartNo = dataPartNO.Menu;
 
             }
             catch (Exception ex)

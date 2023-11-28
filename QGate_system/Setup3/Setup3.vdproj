@@ -3,7 +3,7 @@
 "VSVersion" = "3:800"
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
 "IsWebType" = "8:FALSE"
-"ProjectName" = "8:Setup3"
+"ProjectName" = "8:Qgatesys"
 "LanguageId" = "3:1033"
 "CodePage" = "3:1252"
 "UILanguageId" = "3:1033"
@@ -40,12 +40,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_123FD736921DDFD1D8F3E615BE3D10DD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_34351359AED74DB0A1FD0A20F5773042"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -53,6 +47,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_526795861624DF828EC058154C62CF42"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_123FD736921DDFD1D8F3E615BE3D10DD"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -63,7 +63,7 @@
         "DisplayName" = "8:Debug"
         "IsDebugOnly" = "11:TRUE"
         "IsReleaseOnly" = "11:FALSE"
-        "OutputFilename" = "8:Debug\\Setup3.msi"
+        "OutputFilename" = "8:Debug\\Qgate.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -73,13 +73,29 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
         "Release"
         {
         "DisplayName" = "8:Release"
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:TRUE"
-        "OutputFilename" = "8:Release\\Setup3.msi"
+        "OutputFilename" = "8:Release\\Qgate.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -89,6 +105,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -219,7 +251,7 @@
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_AE9BA378DDDC492FA823A48C6353291B"
             {
-            "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
+            "DefaultLocation" = "8:[ProgramFilesFolder]\\[ProductName]"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -255,9 +287,9 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Setup3"
+        "ProductName" = "8: Qgate"
         "ProductCode" = "8:{8D5BCF0F-2569-4404-BC08-7DA87A881A20}"
-        "PackageCode" = "8:{04AE45DA-86C7-4B23-BA9A-7EF54DAFF8D9}"
+        "PackageCode" = "8:{631C0738-FC78-4231-970E-9C28242D38B9}"
         "UpgradeCode" = "8:{2C9B36FA-0F21-4858-BA34-53539F527925}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -265,12 +297,12 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Default Company Name"
+        "Manufacturer" = "8:Qgate System"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:Setup3"
+        "Title" = "8:Qgate"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Default Company Name"
+        "ARPCONTACT" = "8:Qgate System"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -377,23 +409,9 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_648B0CEE1A4D4AD296C3492EC12B56AD"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_C59760C42EF14ADFA994C342443695BC"
             {
-            "Name" = "8:Setup3"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_34351359AED74DB0A1FD0A20F5773042"
-            "Folder" = "8:_BD8BD12AB64D45BA8A82E8D4E49EE87E"
-            "WorkingFolder" = "8:_AE9BA378DDDC492FA823A48C6353291B"
-            "Icon" = "8:_654724EB829E470E9E1C76344B57D1E0"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_8F3B58A055F3439CB4E85C400930C6E7"
-            {
-            "Name" = "8:Setup3"
+            "Name" = "8:Qgate"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -401,6 +419,20 @@
             "Transitive" = "11:FALSE"
             "Target" = "8:_34351359AED74DB0A1FD0A20F5773042"
             "Folder" = "8:_4D39D0AA51FE473D8B3D5F071662A603"
+            "WorkingFolder" = "8:_AE9BA378DDDC492FA823A48C6353291B"
+            "Icon" = "8:_654724EB829E470E9E1C76344B57D1E0"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_E38E50D1EFE24BFD935603436DCDAF18"
+            {
+            "Name" = "8:Qgate"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_34351359AED74DB0A1FD0A20F5773042"
+            "Folder" = "8:_BD8BD12AB64D45BA8A82E8D4E49EE87E"
             "WorkingFolder" = "8:_AE9BA378DDDC492FA823A48C6353291B"
             "Icon" = "8:_654724EB829E470E9E1C76344B57D1E0"
             "Feature" = "8:"
