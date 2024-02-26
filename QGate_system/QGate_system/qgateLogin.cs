@@ -14,24 +14,29 @@ namespace QGate_system
 {
     public partial class qgateLogin : Form
     {
-        QGate_system.API.Session Session = QGate_system.API.Session.Instance;
+        Session Session = Session.Instance;
         model Model = model.Instance;
+        LocationData LocationData =  LocationData.Instance;
 
         qgateSettingPosition formSetting = new qgateSettingPosition();
         qgateSelectMenu formSelectMenu = new qgateSelectMenu();
         QGate_system.API.API api = new QGate_system.API.API();
         qgateAlert formAlret = new qgateAlert();
-        
+
+
+        operationData operationData = operationData.Instance;
+
+
+
         dynamic dataSetting;
+        //dynamic dataPartNo;
 
         public string macAddress;
-
 
         public qgateLogin()
         {
             InitializeComponent();
             macAddress = api.GetMacAddress();
-
         }
 
         private void lbexit_Click(object sender, EventArgs e)
@@ -61,18 +66,20 @@ namespace QGate_system
                         };
 
                         var jsonDataEmpCode = JsonConvert.SerializeObject(dataEmpCode);
-                        var resultResponseChkLogin = await api.CurPostRequestAsync("Login/chk_login/", jsonDataEmpCode);
-                    
-                        if (!string.IsNullOrEmpty(resultResponseChkLogin))
+                        dynamic dataChkLogin = await api.CurPostRequestAsync("Login/chk_login/", jsonDataEmpCode);
+
+                        // chk login
+                        if (dataChkLogin != null )
+                        //if (dataChkLogin.status == 1) 
                         {
-                            dynamic dataChkLogin = JsonConvert.DeserializeObject(resultResponseChkLogin);
+                            //dynamic dataChkLogin = JsonConvert.DeserializeObject(resultResponseChkLogin);
 
                             if (dataChkLogin.mad_alias == "success-login")
                             {
                                 // set session
                                 Session.PermisLogin = dataChkLogin.data;
                                 Session.Loglogin = dataChkLogin.log_Login;
-                                //MessageBox.Show(dataChkLogin.log_Login.ToString());
+                                Session.Userlogin = dataChkLogin.emp_code;
 
                                 var dataUserLogin = new
                                 {
@@ -98,6 +105,7 @@ namespace QGate_system
                                 formAlret.PathPicRequert = api.LoadPicture(pathPic);
 
                                 formAlret.ShowDialog();
+                                tbLoginUser.Clear();
                             }
                         }
                         else
@@ -123,7 +131,6 @@ namespace QGate_system
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                    Console.WriteLine(ex.Message);
                 }
             }
         }
@@ -138,23 +145,23 @@ namespace QGate_system
                 };
 
                 var jsonData = JsonConvert.SerializeObject(data);
-                var resultResponse = await api.CurPostRequestAsync("Login/chk_macAddress/", jsonData);
-                dataSetting = JsonConvert.DeserializeObject(resultResponse);
+                dataSetting = await api.CurPostRequestAsync("Login/chk_macAddress/", jsonData);
 
-                formSelectMenu.SettingZone = dataSetting.mza_name;
-                formSelectMenu.SettingStation = dataSetting.msa_station;
-
-                var resultResponsePart = await api.CurPostRequestAsync("Login/get_part/", jsonData);
-                dynamic dataPartNO = JsonConvert.DeserializeObject(resultResponsePart);
-
-                Model.DataPartNo = dataPartNO.Menu;
+                LocationData.IdStation = dataSetting.mcd_id;
+                LocationData.Phase = dataSetting.mpa_name;
+                LocationData.Zone = dataSetting.mza_name;
+                LocationData.Station = dataSetting.msa_station;
+                LocationData.Delay = dataSetting.delay;
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                
             }
         }
+
+
     }
 }
 

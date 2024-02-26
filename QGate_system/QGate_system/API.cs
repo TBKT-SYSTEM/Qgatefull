@@ -15,8 +15,10 @@ namespace QGate_system.API
 {
     public class API
     {
-        public static string baseUrl = "http://192.168.161.77:8999/";
-        public async Task<string> CurPostRequestAsync(string endpoint, string jsonData)
+        public static string baseUrl = "http://172.21.64.140:1000/";
+        //public static string baseUrl = "http://192.168.1.184:1000/";
+        //public static string baseUrl = "http://192.168.43.241:1000/";
+        public async Task<object> CurPostRequestAsync(string endpoint, string jsonData)
         {
             try
             {
@@ -31,7 +33,9 @@ namespace QGate_system.API
                     if (response.IsSuccessStatusCode)
                     {
                         string responseContent = await response.Content.ReadAsStringAsync();
-                        return responseContent;
+                        //return responseContent;
+                        dynamic responseData = JsonConvert.DeserializeObject(responseContent);
+                        return responseData;
                     }
                     else
                     {
@@ -45,7 +49,7 @@ namespace QGate_system.API
             }
         }
          
-        public async Task<string> CurGetRequestAsync(string method)
+        public async Task<object> CurGetRequestAsync(string method)
         {
             try
             {
@@ -57,7 +61,8 @@ namespace QGate_system.API
                     if (response.IsSuccessStatusCode)
                     {
                         string responseContent = await response.Content.ReadAsStringAsync();
-                        return responseContent;
+                        dynamic responseData = JsonConvert.DeserializeObject(responseContent);
+                        return responseData;
                     }
                     else
                     {
@@ -74,6 +79,44 @@ namespace QGate_system.API
                 return $"Error: {ex.Message}";
             }
         }
+
+        public async Task<object> CurGetRequestAsync(string url, object data)
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    //HttpResponseMessage response = await client.GetAsync(url+ data);
+                    Uri uri = new Uri(url + data);
+                    HttpResponseMessage response = await client.GetAsync(uri);
+
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string responseContent = await response.Content.ReadAsStringAsync();
+                        dynamic responseData = JsonConvert.DeserializeObject(responseContent);
+                        // Do something with additionalData here if needed
+                        return responseData;
+                    }
+                    else
+                    {
+                        return "NO DATA";
+                    }
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                return $"Request Error: {ex.Message}";
+            }
+            catch (Exception ex)
+            {
+                return $"Error: {ex.Message}";
+            }
+        }
+
+
+
+
 
         public Bitmap LoadPicture(string url)
         {
@@ -109,34 +152,12 @@ namespace QGate_system.API
             }
             return macAddress;
         }
+
+        
+
     }
 
-    public class Session
-    {
-        private static Session instance;
-
-        //Login Admin
-        public string CurrentAdmin { get; set; }
-        public int LogloginAdmin { get; set; }
-
-
-        //Login
-        public string PermisLogin { get; set; }
-        public int Loglogin { get; set; }
-
-        private Session() { }
-        public static Session Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new Session();
-                }
-                return instance;
-            }
-        }
-    }
+    
 
 }
 

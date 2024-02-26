@@ -14,7 +14,6 @@ namespace QGate_system
     public partial class qgateconfirm : Form
     {
         QGate_system.API.API api = new QGate_system.API.API();
-        QGate_system.API.Session appState = QGate_system.API.Session.Instance;
 
         public static qgateconfirm Instance;
 
@@ -47,8 +46,7 @@ namespace QGate_system
         {
 
             var jsonData = JsonConvert.SerializeObject(Data);
-            var result = await api.CurPostRequestAsync(PathApi, jsonData);
-            dynamic dataReponse = JsonConvert.DeserializeObject(result);
+            dynamic dataReponse = await api.CurPostRequestAsync(PathApi, jsonData);
 
             this.Close();
 

@@ -15,9 +15,9 @@ namespace QGate_system
 {
     public partial class qgateLoginAdmin : Form
     {
-        QGate_system.API.Session Session = QGate_system.API.Session.Instance;
         QGate_system.API.API api = new QGate_system.API.API();
         qgateAlert formAlret = new qgateAlert();
+        Session Session = Session.Instance;
 
         public qgateLoginAdmin()
         {
@@ -33,12 +33,8 @@ namespace QGate_system
 
         private async void tbLoginAdmin_KeyDown(object sender, KeyEventArgs e)
         {
-
             if (e.KeyCode == Keys.Enter)
             {
-                model myModel = model.Instance;
-                
-
                 string EmpCode = tbLoginAdmin.Text;
                 try
                 {
@@ -48,43 +44,40 @@ namespace QGate_system
                     };
 
                     var jsonData = JsonConvert.SerializeObject(data);
-                    var resultReponse = await api.CurPostRequestAsync("MenuAdmin/chk_loginAdmin/", jsonData);
+                    dynamic dataReponse = await api.CurPostRequestAsync("MenuAdmin/chk_loginAdmin/", jsonData);
 
+                    if (dataReponse != null)//!string.IsNullOrEmpty(dataReponse)
+                    {
+                         if (dataReponse.mad_alias == "success-login")
+                         {
+                             Session.LogloginAdmin = dataReponse.log_Login;
+                             //MessageBox.Show(dataReponse.log_Login.ToString());
 
-                   if (!string.IsNullOrEmpty(resultReponse))
-                   {
-                        dynamic dataReponse = JsonConvert.DeserializeObject(resultReponse);
+                             Session.CurrentAdmin  = EmpCode;
+                             //MessageBox.Show(Session.CurrentAdmin.ToString());
+                             qgateMenuAdmin formMenuAdmin = new qgateMenuAdmin();
+                             formMenuAdmin.Show();
 
-                        if (dataReponse.mad_alias == "success-login")
-                        {
+                             this.Hide();
+                         }
+                         else if (dataReponse.result == 0)
+                         {
+                             MessageBox.Show("The system has a problem");
+                         }
+                         else
+                         {
+                             string pathPic = dataReponse.mat_path;
 
-                            Session.LogloginAdmin = dataReponse.log_Login;
-                            //MessageBox.Show(dataReponse.log_Login.ToString());
+                             formAlret.MessageRequert = dataReponse.message;
+                             formAlret.PathPicRequert = api.LoadPicture(pathPic);
 
-                            Session.CurrentAdmin  = EmpCode;
-                            qgateMenuAdmin formMenuAdmin = new qgateMenuAdmin();
-                            formMenuAdmin.Show();
-
-                            this.Hide();
-                        }
-                        else if (dataReponse.result == 0)
-                        {
-                            MessageBox.Show("The system has a problem");
-                        }
-                        else
-                        {
-                            string pathPic = dataReponse.mat_path;
-
-                            formAlret.MessageRequert = dataReponse.message;
-                            formAlret.PathPicRequert = api.LoadPicture(pathPic);
-
-                            formAlret.ShowDialog();
-                        }
-                   }
-                   else
-                   {
-                        MessageBox.Show("Empty or invalid response");
-                   }
+                             formAlret.ShowDialog();
+                         }
+                    }
+                    else
+                    {
+                         MessageBox.Show("Empty or invalid response");
+                    }/**/
                 }
                 catch (Exception ex)
                 {

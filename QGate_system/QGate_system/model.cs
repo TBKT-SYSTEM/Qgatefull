@@ -22,13 +22,111 @@ namespace QGate_system
             }
         }
 
-        private object _dataPartNo;
-        public object DataPartNo
+    }
+
+    class LocationData
+    {
+        private static LocationData instance;
+        private LocationData() { }
+        public static LocationData Instance
         {
-            get { return _dataPartNo; }
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new LocationData();
+                }
+                return instance;
+            }
+        }
+
+        private string _IdStation;
+        private string _Phase;
+        private string _Zone;
+        private string _Station;
+        private string _TypeStation;
+        private string _PartNo;
+        private object _selectPartNo;
+        private int _delay;
+        private int _PartNoID;
+
+        public string Phase
+        {
+            get { return _Phase; }
             set
             {
-                _dataPartNo = value;
+                _Phase = value;
+            }
+        }
+
+        public string Zone
+        {
+            get { return _Zone; }
+            set
+            {
+                _Zone = value;
+            }
+        }
+
+        public string Station
+        {
+            get { return _Station; }
+            set
+            {
+                _Station = value;
+            }
+        }
+
+        public string TypeStation
+        {
+            get { return _TypeStation; }
+            set
+            {
+                _TypeStation = value;
+            }
+        }
+        public string PartNo
+        {
+            get { return _PartNo; }
+            set
+            {
+                _PartNo = value;
+            }
+        }
+
+        public int PartNoID
+        {
+            get { return _PartNoID; }
+            set
+            {
+                _PartNoID = value;
+            }
+        }
+
+        public object selectPartNo
+        {
+            get { return _selectPartNo; }
+            set
+            {
+                _selectPartNo = value;
+            }
+        }
+
+        public string IdStation
+        {
+            get { return _IdStation; }
+            set
+            {
+                _IdStation = value;
+            }
+        }
+
+        public int Delay
+        {
+            get { return _delay; }
+            set
+            {
+                _delay = value;
             }
         }
 
@@ -36,4 +134,34 @@ namespace QGate_system
 
 
     }
+
+
+    public class Session
+    {
+        private static Session instance;
+
+        //Login Admin
+        public string CurrentAdmin { get; set; }
+        public int LogloginAdmin { get; set; }
+
+        //Login
+        public string PermisLogin { get; set; }
+        public int Loglogin { get; set; }
+        public string Userlogin { get; set; }
+
+        private Session() { }
+        public static Session Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Session();
+                }
+                return instance;
+            }
+        }
+    }
+
+
 }

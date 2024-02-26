@@ -13,34 +13,13 @@ namespace QGate_system
 {
     public partial class qgateSelectMenu : Form
     {
-        QGate_system.API.Session Session = QGate_system.API.Session.Instance;
         QGate_system.API.API api = new QGate_system.API.API();
-        model myModel = model.Instance;
+        Session Session = Session.Instance;
+        LocationData LocationData = LocationData.Instance;
 
 
         public static qgateSelectMenu instance;
         public FlowLayoutPanel flpUserInstance;
-
-
-        private string _settingZone;
-        public string SettingZone
-        {
-            get { return _settingZone; }
-            set
-            {
-                _settingZone = value;
-            }
-        }
-
-        private string _settingStation;
-        public string SettingStation
-        {
-            get { return _settingStation; }
-            set
-            {
-                _settingStation = value;
-            }
-        }
 
         public qgateSelectMenu()
         {
@@ -67,8 +46,6 @@ namespace QGate_system
             string userLoginJson = JsonConvert.SerializeObject(userControl); // แปลง UserLogin เป็น string
             dynamic datauser = JsonConvert.DeserializeObject(userLoginJson);
 
-            //Console.WriteLine(datauser);
-
             UserProfile[] userProfile = new UserProfile[1];
 
             for (int i = 0; i < userProfile.Length; i++)
@@ -82,25 +59,24 @@ namespace QGate_system
             }
 
             await Task.Delay(6);
-
             flpUser.Refresh();
         }
 
 
         private async void qgateSelectMenu_Load(object sender, EventArgs e)
         {
-            lbZone.Text = SettingZone;
-            lbStation.Text = SettingStation;
 
+            lbZone.Text = LocationData.Zone;
+            lbStation.Text = LocationData.Station;
 
             var data = new
             {
-                Permis = Session.PermisLogin
+                Permis = Session.PermisLogin,
+                MacAddress = api.GetMacAddress()
             };
 
             var jsonDataPermis = JsonConvert.SerializeObject(data);
-            var resultResponse = await api.CurPostRequestAsync("Login/menuPremis/", jsonDataPermis);
-            dynamic dataMenubypermis = JsonConvert.DeserializeObject(resultResponse);
+            dynamic dataMenubypermis = await api.CurPostRequestAsync("Login/menuPremis/", jsonDataPermis);
 
             MenuItem[] userCtrl = new MenuItem[dataMenubypermis.Menu.Count];
 
@@ -117,13 +93,12 @@ namespace QGate_system
             string userLoginJson = JsonConvert.SerializeObject(UserLogin); // แปลง UserLogin เป็น string
             dynamic datauser = JsonConvert.DeserializeObject(userLoginJson);
 
-
-
             var memberArr = new string[2] { datauser.EmpCode, datauser.NameUser };
             memberData.memberList.Add(memberArr);
 
             memberData memberDatas = new memberData();
             memberDatas.populateItems();
+
         }
 
         private void pbAddUser_Click(object sender, EventArgs e)
@@ -135,7 +110,7 @@ namespace QGate_system
         private void pbMinusUser_Click(object sender, EventArgs e)
         {
             if (memberData.removeLastMember())
-            {
+            {                                     
                 memberData memberDatas = new memberData();
                 memberDatas.populateItems();
             }
@@ -159,7 +134,6 @@ namespace QGate_system
             this.Hide();
         }
 
-
         private void flpScrollUp_Click(object sender, EventArgs e)
         {
             int change = flpUser.VerticalScroll.Value - flpUser.VerticalScroll.SmallChange * 30;
@@ -170,8 +144,12 @@ namespace QGate_system
             int change = flpUser.VerticalScroll.Value + flpUser.VerticalScroll.SmallChange * 30;
             flpUser.AutoScrollPosition = new Point(0, change);
         }
-
     }
+
+
+
+
+
 
 
 

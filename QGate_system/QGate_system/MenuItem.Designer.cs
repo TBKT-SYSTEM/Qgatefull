@@ -58,7 +58,6 @@ namespace QGate_system
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MenuItem";
             this.Size = new System.Drawing.Size(277, 108);
-            this.Load += new System.EventHandler(this.MenuItem_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbMenu)).EndInit();
             this.ResumeLayout(false);
 

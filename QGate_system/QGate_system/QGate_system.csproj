@@ -70,9 +70,94 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="zxing, Version=0.16.9.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.9\lib\net47\zxing.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.presentation, Version=0.16.9.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.9\lib\net47\zxing.presentation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintTag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintTag.Designer.cs">
+      <DependentUpon>PrintTag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintTagDefect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintTagDefect.Designer.cs">
+      <DependentUpon>PrintTagDefect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="qgateDefectNc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="qgateDefectNc.Designer.cs">
+      <DependentUpon>qgateDefectNc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="qgateDefectNg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="qgateDefectNg.Designer.cs">
+      <DependentUpon>qgateDefectNg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="qgateOperation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="qgateOperation.Designer.cs">
+      <DependentUpon>qgateOperation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="qgateOperationManual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="qgateOperationManual.Designer.cs">
+      <DependentUpon>qgateOperationManual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="operationData.cs" />
+    <Compile Include="qgateMenuStart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="qgateMenuStart.Designer.cs">
+      <DependentUpon>qgateMenuStart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="qgateMenuReprintTag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="qgateMenuReprintTag.Designer.cs">
+      <DependentUpon>qgateMenuReprintTag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="qgateReprintDefect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="qgateReprintDefect.Designer.cs">
+      <DependentUpon>qgateReprintDefect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="qgateReprintQgate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="qgateReprintQgate.Designer.cs">
+      <DependentUpon>qgateReprintQgate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="qgateReprintQgateScanPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="qgateReprintQgateScanPrint.Designer.cs">
+      <DependentUpon>qgateReprintQgateScanPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="qgateScanTag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="qgateScanTag.Designer.cs">
+      <DependentUpon>qgateScanTag.cs</DependentUpon>
+    </Compile>
     <Compile Include="memberData.cs" />
     <Compile Include="MenuItem.cs">
       <SubType>UserControl</SubType>
@@ -131,18 +216,43 @@
     <Compile Include="qgateSelectMenu.Designer.cs">
       <DependentUpon>qgateSelectMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="qgateSelectPart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="qgateSelectPart.Designer.cs">
+      <DependentUpon>qgateSelectPart.cs</DependentUpon>
+    </Compile>
     <Compile Include="qgateSettingPosition.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="qgateSettingPosition.Designer.cs">
       <DependentUpon>qgateSettingPosition.cs</DependentUpon>
     </Compile>
+    <Compile Include="QRCodeGenerator.cs" />
     <Compile Include="UserProfile.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserProfile.Designer.cs">
       <DependentUpon>UserProfile.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="PrintTag.resx">
+      <DependentUpon>PrintTag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintTagDefect.resx">
+      <DependentUpon>PrintTagDefect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="qgateDefectNc.resx">
+      <DependentUpon>qgateDefectNc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="qgateDefectNg.resx">
+      <DependentUpon>qgateDefectNg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="qgateOperation.resx">
+      <DependentUpon>qgateOperation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="qgateOperationManual.resx">
+      <DependentUpon>qgateOperationManual.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MenuItem.resx">
       <DependentUpon>MenuItem.cs</DependentUpon>
     </EmbeddedResource>
@@ -177,8 +287,29 @@
     <EmbeddedResource Include="adminMenu.resx">
       <DependentUpon>adminMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="qgateMenuStart.resx">
+      <DependentUpon>qgateMenuStart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="qgateMenuReprintTag.resx">
+      <DependentUpon>qgateMenuReprintTag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="qgateReprintDefect.resx">
+      <DependentUpon>qgateReprintDefect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="qgateReprintQgate.resx">
+      <DependentUpon>qgateReprintQgate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="qgateReprintQgateScanPrint.resx">
+      <DependentUpon>qgateReprintQgateScanPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="qgateScanTag.resx">
+      <DependentUpon>qgateScanTag.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="qgateSelectMenu.resx">
       <DependentUpon>qgateSelectMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="qgateSelectPart.resx">
+      <DependentUpon>qgateSelectPart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="qgateSettingPosition.resx">
       <DependentUpon>qgateSettingPosition.cs</DependentUpon>
@@ -239,6 +370,27 @@
   <ItemGroup>
     <Content Include="3-_3_.ico" />
     <Content Include="icon.ico" />
+    <None Include="Resources\ReprintQgateScanTag.png" />
+    <None Include="Resources\ReprintDefectDate11.png" />
+    <None Include="Resources\ReprintQgateDate2.png" />
+    <None Include="Resources\ReprintDefectDate2.png" />
+    <None Include="Resources\ReprintDefectDate1.png" />
+    <None Include="Resources\ReprintQgateDate1.png" />
+    <None Include="Resources\ReprintDefectDate.png" />
+    <None Include="Resources\ReprintQgateDate.png" />
+    <None Include="Resources\Reprint.png" />
+    <None Include="Resources\DefectNG.png" />
+    <None Include="Resources\DefectNC.png" />
+    <None Include="Resources\End.png" />
+    <None Include="Resources\OperationDMC11.png" />
+    <None Include="Resources\operationNotDMC11.png" />
+    <None Include="Resources\Finish.png" />
+    <None Include="Resources\OperationDMC1.png" />
+    <None Include="Resources\operationNotDMC1.png" />
+    <None Include="Resources\MenuStart.png" />
+    <None Include="Resources\Select Part.png" />
+    <None Include="Resources\setting1.png" />
+    <None Include="Resources\ScanTagFA 1.png" />
     <None Include="Resources\1.png" />
     <None Include="Resources\2.png" />
     <None Include="Resources\ScrollDown1.png" />

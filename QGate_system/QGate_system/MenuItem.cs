@@ -67,10 +67,6 @@ namespace QGate_system
             return formType == null ? null : form;
         }
 
-        private void MenuItem_Load(object sender, EventArgs e)
-        {
-
-        }
 
 
     }

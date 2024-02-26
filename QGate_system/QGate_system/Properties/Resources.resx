@@ -118,44 +118,86 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ScrollDown1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ScrollDown1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="operationNotDMC11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\operationNotDMC11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="start11" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\start11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Popup-NoText1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Popup-NoText1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MenuAdmin" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MenuAdmin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Popup-NoText" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Popup-NoText.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Popup" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Popup.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ScrollUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ScrollUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SettingStation1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SettingStation1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="AlertFailed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AlertFailed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ScanTagFA 1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ScanTagFA 1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ScrollDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ScrollDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="start1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\start1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Popup-NoText1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Popup-NoText1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AlertSucceed1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AlertSucceed1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SettingStation1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SettingStation1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ReprintQgateDate1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ReprintQgateDate1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DefectNG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DefectNG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ReprintDefectDate2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ReprintDefectDate2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Finish" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Finish.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Popup1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Popup1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DefectNC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DefectNC.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OperationDMC11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OperationDMC11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MenuStart" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MenuStart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Login_Admin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Login_Admin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ScrollDown1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ScrollDown1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AlertFailed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AlertFailed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MenuAdmin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MenuAdmin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Popup" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Popup.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="End" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\End.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ReprintQgateDate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ReprintQgateDate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ReprintQgateDate2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ReprintQgateDate2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Popup-NoText" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Popup-NoText.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="start11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\start11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ReprintDefectDate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ReprintDefectDate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ReprintDefectDate11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ReprintDefectDate11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SettingStation" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SettingStation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -163,19 +205,40 @@
   <data name="MenuAdmin2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MenuAdmin2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Btn-MenuAdmin" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Btn-MenuAdmin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Reprint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Reprint.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Popup1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Popup1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ScrollUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ScrollUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Select Part" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Select Part.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="operationNotDMC1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\operationNotDMC1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="start1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\start1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="setting1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\setting1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Login_Admin" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Login_Admin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Btn-MenuAdmin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Btn-MenuAdmin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="AlertSucceed1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AlertSucceed1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OperationDMC1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OperationDMC1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ReprintDefectDate1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ReprintDefectDate1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ReprintQgateScanTag" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ReprintQgateScanTag.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

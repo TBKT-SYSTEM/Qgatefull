@@ -25,7 +25,18 @@ C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_s
 C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\bin\Debug\QGate_system.exe
 C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\bin\Debug\QGate_system.pdb
 C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\bin\Debug\Newtonsoft.Json.dll
+C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\bin\Debug\zxing.dll
+C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\bin\Debug\zxing.presentation.dll
 C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\bin\Debug\Newtonsoft.Json.xml
+C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\bin\Debug\zxing.xml
+C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\bin\Debug\zxing.presentation.xml
+C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.csproj.AssemblyReference.cache
+C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.PrintTag.resources
+C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.PrintTagDefect.resources
+C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.qgateDefectNc.resources
+C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.qgateDefectNg.resources
+C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.qgateOperation.resources
+C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.qgateOperationManual.resources
 C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.MenuItem.resources
 C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.qgateAddUser.resources
 C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.qgateconfirm.resources
@@ -35,7 +46,13 @@ C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_s
 C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.Properties.Resources.resources
 C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.qgateMenuAdmin.resources
 C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.adminMenu.resources
+C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.qgateMenuStart.resources
+C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.qgateMenuReprintTag.resources
+C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.qgateReprintDefect.resources
+C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.qgateReprintQgate.resources
+C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.qgateScanTag.resources
 C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.qgateSelectMenu.resources
+C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.qgateSelectPart.resources
 C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.qgateSettingPosition.resources
 C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.UserProfile.resources
 C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.csproj.GenerateResource.cache
@@ -43,3 +60,4 @@ C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_s
 C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.csproj.CopyComplete
 C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.exe
 C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.pdb
+C:\Users\kitti\OneDrive\เอกสาร\GitHub\Qgatefull\QGate_system\QGate_system\obj\Debug\QGate_system.qgateReprintQgateScanPrint.resources

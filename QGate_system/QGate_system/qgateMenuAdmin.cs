@@ -14,7 +14,7 @@ namespace QGate_system
     public partial class qgateMenuAdmin : Form
     {
         QGate_system.API.API api = new QGate_system.API.API();
-        QGate_system.API.Session Session = QGate_system.API.Session.Instance;
+        Session Session = Session.Instance;
 
         public qgateMenuAdmin()
         {
@@ -27,8 +27,8 @@ namespace QGate_system
         
         private async void plusMenuAdmin()
         {
-            var reponseResult = await api.CurGetRequestAsync("MenuAdmin/get_MenuAdmin/");
-            dynamic dataReponse = JsonConvert.DeserializeObject(reponseResult);
+            dynamic dataReponse = await api.CurGetRequestAsync("MenuAdmin/get_MenuAdmin/");
+            //dynamic dataReponse = JsonConvert.DeserializeObject(reponseResult);
 
             adminMenu[] userCtrl = new adminMenu[dataReponse.data.Count];
             for (int i = 0 ; i < userCtrl.Length ; i++)

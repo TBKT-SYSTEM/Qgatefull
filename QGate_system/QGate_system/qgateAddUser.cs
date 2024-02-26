@@ -30,26 +30,26 @@ namespace QGate_system
             };
 
             var jsonDataPermis = JsonConvert.SerializeObject(data);
-            var resultResponse = await api.CurPostRequestAsync("Login/chk_login/", jsonDataPermis);
+            dynamic resultResponse = await api.CurPostRequestAsync("Login/chk_login/", jsonDataPermis);
             
 
-            if (!string.IsNullOrEmpty(resultResponse))
+            if (resultResponse != null)
             {
-                dynamic dataUserResponse = JsonConvert.DeserializeObject(resultResponse);
+                //dynamic dataUserResponse = JsonConvert.DeserializeObject(resultResponse);
 
-                if (dataUserResponse.mad_alias == "success-login")
+                if (resultResponse.mad_alias == "success-login")
                 {
                     var dataUserLogin = new
                     {
-                        PathPic = "http://192.168.161.207/tbkk_shopfloor/asset/img_emp/" + dataUserResponse.emp_code + ".jpg",
-                        EmpCode = dataUserResponse.emp_code,
-                        NameUser = dataUserResponse.emp_name
+                        PathPic = "http://192.168.161.207/tbkk_shopfloor/asset/img_emp/" + resultResponse.emp_code + ".jpg",
+                        EmpCode = resultResponse.emp_code,
+                        NameUser = resultResponse.emp_name
                     };
-                    string emp_code = dataUserResponse.emp_code;
+                    string emp_code = resultResponse.emp_code;
 
                     if (memberData.chk_RepeatMember(emp_code))
                     {
-                        var result = await api.CurGetRequestAsync("Login/get_PathPic/");
+                        dynamic result = await api.CurGetRequestAsync("Login/get_PathPic/");
                         dynamic pathPicWraing = JsonConvert.DeserializeObject(result);
                         string pathPic_Warning = pathPicWraing.Path;
 
@@ -59,7 +59,7 @@ namespace QGate_system
                     }
                     else
                     {
-                        var memberArr = new string[2] { dataUserResponse.emp_code, dataUserResponse.emp_name };
+                        var memberArr = new string[2] { resultResponse.emp_code, resultResponse.emp_name };
 
                         memberData.memberList.Add(memberArr);
                         memberData.populateItems();
@@ -68,15 +68,15 @@ namespace QGate_system
                     tbAddUser.Clear();
                     this.Hide();
                 }
-                else if (dataUserResponse.result == 0)
+                else if (resultResponse.result == 0)
                 {
                     MessageBox.Show("The system has a problem");
                 }
                 else
                 {
-                    string pathPic = dataUserResponse.mat_path;
+                    string pathPic = resultResponse.mat_path;
 
-                    formAlret.MessageRequert = dataUserResponse.message;
+                    formAlret.MessageRequert = resultResponse.message;
                     formAlret.PathPicRequert = api.LoadPicture(pathPic);
                     formAlret.ShowDialog();
                 }

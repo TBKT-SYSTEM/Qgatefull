@@ -67,10 +67,9 @@ namespace QGate_system
 
             }
         }
-
-       
-
-
-
     }
+
+
+
+
 }

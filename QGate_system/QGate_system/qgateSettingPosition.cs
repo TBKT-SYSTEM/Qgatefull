@@ -17,8 +17,8 @@ namespace QGate_system
     {
         qgateMenuAdmin formMenuAdmin = new qgateMenuAdmin();
         QGate_system.API.API api = new QGate_system.API.API();
-        QGate_system.API.Session appState = QGate_system.API.Session.Instance;
         qgateAlert formAlret = new qgateAlert();
+        Session Session = Session.Instance;
 
         public string macAddress;
 
@@ -42,14 +42,14 @@ namespace QGate_system
         private async void setStation_Load(object sender, EventArgs e)
         {
             //Console.WriteLine("macaddress modifity : "+macAddress);
-            var result = await api.CurGetRequestAsync("MenuAdmin/get_Phase/");
-            dynamic data = JsonConvert.DeserializeObject(result);
+            dynamic result = await api.CurGetRequestAsync("MenuAdmin/get_Phase/");
+            //dynamic data = JsonConvert.DeserializeObject(result);
 
             PhaseItem item_please = new PhaseItem(Convert.ToInt32(0), "Choose Phase");
             cbSelectPhase.Items.Add(item_please);
             cbSelectPhase.SelectedIndex = 0;
 
-            foreach (var Phase in data.Phase)
+            foreach (var Phase in result.Phase)
             {
                 PhaseItem item = new PhaseItem(Convert.ToInt32(Phase.mpa_id), Phase.mpa_name.ToString());
                 cbSelectPhase.Items.Add(item);
@@ -62,8 +62,8 @@ namespace QGate_system
             };
 
             var jsonDataMADD = JsonConvert.SerializeObject(dataMADD);
-            var resultSetting = await api.CurPostRequestAsync("MenuAdmin/get_Setting/", jsonDataMADD);
-            dynamic dataSetting = JsonConvert.DeserializeObject(resultSetting);
+            dynamic dataSetting = await api.CurPostRequestAsync("MenuAdmin/get_Setting/", jsonDataMADD);
+            //dynamic dataSetting = JsonConvert.DeserializeObject(resultSetting);
 
             if (dataSetting.Setting.Count > 0)
             {
@@ -100,14 +100,14 @@ namespace QGate_system
             int Index_Phase = cbSelectPhase.SelectedIndex;
             if (Index_Phase != 0)
             {
-                var result = await api.CurGetRequestAsync("MenuAdmin/get_Zone/");
-                dynamic data = JsonConvert.DeserializeObject(result);
+                dynamic result = await api.CurGetRequestAsync("MenuAdmin/get_Zone/");
+                //dynamic data = JsonConvert.DeserializeObject(result);
 
                 ZoneItem item_please = new ZoneItem(Convert.ToInt32(0), "Choose Zone");
                 cbSelectZone.Items.Add(item_please);
                 cbSelectZone.SelectedIndex = 0;
 
-                foreach (var Zone in data.Zone)
+                foreach (var Zone in result.Zone)
                 {
                     ZoneItem item = new ZoneItem(Convert.ToInt32(Zone.mza_id), Zone.mza_name.ToString());
                     cbSelectZone.Items.Add(item);
@@ -139,14 +139,14 @@ namespace QGate_system
             if (Index_Zone > 0)
             {
 
-                var result = await api.CurGetRequestAsync("MenuAdmin/get_Station/");
-                dynamic data = JsonConvert.DeserializeObject(result);
+                dynamic result = await api.CurGetRequestAsync("MenuAdmin/get_Station/");
+                //dynamic data = JsonConvert.DeserializeObject(result);
 
                 StationItem item_please = new StationItem(Convert.ToInt32(0), "Choose Station");
                 cbSelectStation.Items.Add(item_please);
                 cbSelectStation.SelectedIndex = 0;
 
-                foreach (var Zone in data.Station)
+                foreach (var Zone in result.Station)
                 {
                     StationItem item = new StationItem(Convert.ToInt32(Zone.msa_id), Zone.msa_station.ToString());
                     cbSelectStation.Items.Add(item);
@@ -170,12 +170,13 @@ namespace QGate_system
 
         private async void lbConfirm_Click(object sender, EventArgs e)
         {
+            
             PhaseItem selectedPhaseItem = (PhaseItem)cbSelectPhase.SelectedItem;
             ZoneItem selectedZoneItem = (ZoneItem)cbSelectZone.SelectedItem;
             StationItem selectedStationItem = (StationItem)cbSelectStation.SelectedItem;
 
-            var result = await api.CurGetRequestAsync("Login/get_PathPic/");
-            dynamic pathPicWraing = JsonConvert.DeserializeObject(result);
+            dynamic pathPicWraing = await api.CurGetRequestAsync("MstPathPic/get_PathPic_Warning/");
+            //dynamic pathPicWraing = JsonConvert.DeserializeObject(result);
             string pathPic_Warning = pathPicWraing.Path;
             
 
@@ -210,7 +211,7 @@ namespace QGate_system
                         stationId = selectedStationItem.msa_id.ToString(),
                         macAddress = macAddress
                     },
-                    person = appState.CurrentAdmin
+                    person = Session.CurrentAdmin
                 };
 
                 qgateconfirm formconfirm = new qgateconfirm();
