@@ -13,7 +13,8 @@ namespace QGate_system
 {
     public partial class PrintTag : Form
     {
-        operationData operationData = operationData.Instance;
+        //operationData operationData = operationData.Instance;
+        //LocationData LocationData = LocationData.Instance;
 
         public PrintTag()
         {
@@ -26,7 +27,7 @@ namespace QGate_system
             return (int)(millimeters * inchesPerMillimeter * 100);
         }
 
-        public void printTagQgate(string Sendto, string custPartNo, string boxNo, string tagqgate, string id_product, string location)
+        public void printTagQgate(string Sendto, string partno, string partNoName, string model, string custPartNo, string boxNo, string tagqgate, string id_product, string location, string QTY , string lotno, string workshift , string line ,string Phase)
         {
             //QRCodeGenerator generator = new QRCodeGenerator();
             PrintDocument printDoc = new PrintDocument();
@@ -34,8 +35,8 @@ namespace QGate_system
             PaperSize customPaperSize = new PaperSize("Custom", MillimetersToInches(79.0f), MillimetersToInches(181.0f));
             printDoc.DefaultPageSettings.PaperSize = customPaperSize;
 
-            int partNameSize = "COMPRESSOR HOUSING".Length > 25 ? 12 : 18;
-            int partNameY = "COMPRESSOR HOUSING".Length > 25 ? 75 : 80;
+            //int partNameSize = "COMPRESSOR HOUSING".Length > 25 ? 12 : 18;
+            //int partNameY = "COMPRESSOR HOUSING".Length > 25 ? 75 : 80;
             printDoc.DefaultPageSettings.Landscape = true;
             printDoc.PrintPage += (sender, e) =>
             {
@@ -71,13 +72,13 @@ namespace QGate_system
                 e.Graphics.DrawString("To", label13.Font, Brushes.Black, 100, 10);
                 e.Graphics.DrawString(Sendto, label1.Font, Brushes.Black, 140, 16);
                 e.Graphics.DrawString("PART NO", label13.Font, Brushes.Black, 100, 50);
-                e.Graphics.DrawString(operationData.partnotagfa, label10.Font, Brushes.Black, 140, 65);
+                e.Graphics.DrawString(partno, label10.Font, Brushes.Black, 140, 65);
                 e.Graphics.DrawString("PART NAME", label13.Font, Brushes.Black, 100, 100);
-                e.Graphics.DrawString(operationData.partNoName, label1.Font, Brushes.Black, 140, 116);
+                e.Graphics.DrawString(partNoName, label1.Font, Brushes.Black, 140, 116);
                 e.Graphics.DrawString("PROCESS", label13.Font, Brushes.Black, 575, 100);
                 e.Graphics.DrawString("Q-GATE", label1.Font, Brushes.Black, 585, 116);
                 e.Graphics.DrawString("MODEL", label13.Font, Brushes.Black, 100, 145);
-                e.Graphics.DrawString(operationData.model, label1.Font, Brushes.Black, 140, 165);
+                e.Graphics.DrawString(model, label1.Font, Brushes.Black, 140, 165);
                 e.Graphics.DrawString("CUSTOMER PART NO.", label13.Font, Brushes.Black, 275, 145);
                 e.Graphics.DrawString(custPartNo, label1.Font, Brushes.Black, 295, 165);
                 e.Graphics.DrawString("LOCATION", label13.Font, Brushes.Black, 575, 145);
@@ -86,7 +87,7 @@ namespace QGate_system
 
                 //if (flgprint == "normalprint" || flgprint == "reprint")
                 //{
-                e.Graphics.DrawString(operationData.partsnp, label12.Font, Brushes.Black, 160, 186);
+                e.Graphics.DrawString(QTY, label12.Font, Brushes.Black, 160, 186);
                 //}
 
                 e.Graphics.DrawString("BOX NO.", label13.Font, Brushes.Black, 275, 193);
@@ -94,13 +95,13 @@ namespace QGate_system
                 e.Graphics.DrawString("CHECK DATE | LOT NO.", title.Font, Brushes.Black, 415, 193);
                 e.Graphics.DrawString(DateTime.Now.ToString("dd/MM/yyyy") + " | " + qgateScanTag.genLot(DateTime.Now) , values.Font, Brushes.Black, 415, 213);
                 e.Graphics.DrawString("PROD. LOT NO.", label13.Font, Brushes.Black, 100, 245);
-                e.Graphics.DrawString(operationData.partlotno, label10.Font, Brushes.Black, 140, 255);
+                e.Graphics.DrawString(lotno, label10.Font, Brushes.Black, 140, 255);
                 e.Graphics.DrawString("SHIFT", label13.Font, Brushes.Black, 235, 245);
-                e.Graphics.DrawString(operationData.partworkshift, label10.Font, Brushes.Black, 278, 255);
+                e.Graphics.DrawString(workshift, label10.Font, Brushes.Black, 278, 255);
                 e.Graphics.DrawString("LINE", label13.Font, Brushes.Black, 360, 245);
-                e.Graphics.DrawString(operationData.partline, label1.Font, Brushes.Black, 380, 262);
+                e.Graphics.DrawString(line, label1.Font, Brushes.Black, 380, 262);
                 e.Graphics.DrawString("PHASE", label13.Font, Brushes.Black, 492, 245);
-                e.Graphics.DrawString("10", label1.Font, Brushes.Black, 516, 262);
+                e.Graphics.DrawString(Phase, label1.Font, Brushes.Black, 516, 262);
 
 
             };

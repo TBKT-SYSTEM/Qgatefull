@@ -341,7 +341,7 @@ namespace QGate_system
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(179, 219);
+            this.button1.Location = new System.Drawing.Point(48, 77);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 39;

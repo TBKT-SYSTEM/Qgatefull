@@ -117,8 +117,8 @@ namespace QGate_system
             lbZone.Text = LocationData.Zone;
             lbStation.Text = LocationData.Station;
             lbPartNo.Text = (LocationData.PartNo.Length <= 15) ? LocationData.PartNo : LocationData.PartNo.Substring(0, 15) + "....";
-            lbPartNoName.Text = "test";
-            // lbPartNoName.Text = (operationData.partNoName.Length <= 15) ? operationData.partNoName : operationData.partNoName.Substring(0, 15) + "....";
+            //lbPartNoName.Text = "test";
+            lbPartNoName.Text = (operationData.partNoName.Length <= 15) ? operationData.partNoName : operationData.partNoName.Substring(0, 15) + "....";
             lbProductDate.Text = operationData.partactualdate1;
             lbModel.Text = operationData.model;
             lbLotNo.Text = operationData.lotcur;
@@ -295,7 +295,7 @@ namespace QGate_system
                             operationData.partworkshift = responseDataWorkShoft.mws_shift;
                             var datapartNoName = new
                             {
-                                nameDMC = "Bearing Housing",
+                                nameDMC = operationData.partNoName,
                             };
                             //MessageBox.Show(data.ToString());
 
@@ -687,7 +687,6 @@ namespace QGate_system
         public async Task GenQRCodeQgate(string QrProduct)
         {
             qgateScanTag qgateScanTag = new qgateScanTag();
-            PrintTag printTag = new PrintTag();
 
             //MessageBox.Show(operationData.partnotagfa.Length.ToString());
 
@@ -742,7 +741,8 @@ namespace QGate_system
                 if (responseINSQRQgate.Status == 1)
                 {
                     //operationData.partnotagfa = "SB03S400004-B";
-                    /*string parameter = $"?partNumber={operationData.partnotagfa}";
+                    /**/
+                    string parameter = $"?partNumber={operationData.partnotagfa}";
                     dynamic resultLOCATION = await api.CurGetRequestAsync("http://192.168.161.77/apiSystem/exp/getItemMaster", parameter);
 
                     //Console.WriteLine("get location : " + resultLOCATION);
@@ -751,11 +751,12 @@ namespace QGate_system
                     foreach (var itemLOCATION in resultLOCATION)
                     {
                         location = itemLOCATION.LOCATION;
-                    }*/
+                    }
 
-                    string location = null;
+                    //string location = null;
 
-                    printTag.printTagQgate(" ", " ", lbBoxNo.Text, tagQgate, QrProduct, location);
+                    PrintTag printTag = new PrintTag();
+                    printTag.printTagQgate(" ",operationData.partnotagfa, operationData.partNoName,operationData.model," ", lbBoxNo.Text, tagQgate, QrProduct, location, tbCounter.Text, operationData.partlotno, operationData.partworkshift, operationData.partline, LocationData.Phase);
                 }
                 else
                 {
@@ -777,6 +778,8 @@ namespace QGate_system
             {
                 await finish();
             }
+
+           
             
             await end();
             this.Hide();
@@ -788,7 +791,6 @@ namespace QGate_system
         {
             //object[] CountDefect = new object[5];
             qgateScanTag scanTag = new qgateScanTag();
-            PrintTagDefect TagDefect = new PrintTagDefect();
 
             //try
             //{
@@ -853,6 +855,8 @@ namespace QGate_system
                         //Console.WriteLine("responseGetWi : " + item);
                         if (responseGetWi.Status == 1)
                         {
+                            int CountDefect = item.idc_count;
+                            int QTY;
                             string qrcodeDefect;
                             double loopPrintTagDefect = (double)item.idc_count / int.Parse(operationData.partsnp);
 
@@ -872,71 +876,75 @@ namespace QGate_system
                             for (int i = 1; (int)Math.Ceiling(loopPrintTagDefect) >= i; i++)
                             {
                                 Console.WriteLine("print NC");
-                                qrcodeDefect = String.Concat("DF ", 2, " ", operationData.partline, " ", responseGetWi.wi, " ", scanTag.genLot(DateTime.Now),
-                                                              " ", (i > 9) ? "0" + i : "00" + i, " ", spacedefectQty + operationData.partsnp, " ", operationData.partnotagfa);
+                                qrcodeDefect = String.Concat("DF ", 2, " ", operationData.partline, " ", responseGetWi.wi, " ", operationData.partseqactual, " ", scanTag.genLot(DateTime.Now),
+                                                              " ", LocationData.Phase, " ", (i > 9) ? "0" + i : "00" + i, " ", spacedefectQty + operationData.partsnp, " ", operationData.partnotagfa);
                                 //Console.WriteLine(qrcodeDefect);
+                                if (CountDefect / int.Parse(operationData.partsnp) < 1)
+                                {
+                                    QTY = CountDefect;
+                                    CountDefect = 0;
+                                }
+                                else
+                                {
+                                    QTY = int.Parse(operationData.partsnp);
+                                    CountDefect = CountDefect - int.Parse(operationData.partsnp);
+                                }
+
 
                                 startIndex = i * int.Parse(operationData.partsnp) - int.Parse(operationData.partsnp); //( i == 1)? 0 : i *  -snp
                                 endIndex = startIndex + int.Parse(operationData.partsnp) - 1;
 
-                                //Console.WriteLine($"starindex: {startIndex}");
-                                //Console.WriteLine($"endindex: {endIndex}");
 
+                                string json = responseGetDefect.data.ToString();
+                                var data = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(json);
+
+                                var countsByMdCode = data
+                                    .Skip(startIndex) // ข้าม index ตามที่กำหนด
+                                    .Take(endIndex - startIndex + 1) // เลือกข้อมูลตาม index ที่กำหนด
+                                    .GroupBy(items => items["md_code"].ToString()) // กลุ่มข้อมูลตามค่าของ md_code
+                                    .Select(group => new { MdCode = group.Key, Count = group.Count() }); // นับจำนวนรายการแยกตามค่าของ md_code พร้อมกับ index
+
+                                // แสดงผลลัพธ์
+                                foreach (var countByMdCode in countsByMdCode)
+                                {
+                                    qrDefectDetail += $"{ countByMdCode.MdCode} = {countByMdCode.Count}";
+                                    if (qrDefectDetail != null)
+                                    {
+                                        qrDefectDetail += " | ";
+                                    }
+                                }
+
+                                if (qrDefectDetail != null || qrDefectDetail == "")
+                                {
+                                    qrDefectDetail = qrDefectDetail.Substring(0, qrDefectDetail.Length - 3);
+                                }
+                                
+                                string parameter = $"?partNumber={operationData.partnotagfa}";
+                                dynamic resultLOCATION = await api.CurGetRequestAsync("http://192.168.161.77/apiSystem/exp/getItemMaster", parameter);
+                                string location = null;
+                                foreach (var itemLOCATION in resultLOCATION)
+                                {
+                                    location = itemLOCATION.LOCATION;
+                                }
 
                                 var dateInsDefect = new
                                 {
                                     countID = operationData.countDMCDefectNCId,
                                     CodeDefect = qrcodeDefect,
                                     box = (i > 9) ? "0" + i : "00" + i,
+                                    DefectQrDetail = qrDefectDetail,
                                     login_user = Session.Userlogin
                                 };
-                                //Console.WriteLine("dateInsDefect : " + dateInsDefect);
 
                                 var dateInsDefectJson = JsonConvert.SerializeObject(dateInsDefect);
                                 dynamic responseInsDefect = await api.CurPostRequestAsync("OperationIns/insert_TagDefect/", dateInsDefectJson);
 
                                 if (responseInsDefect.Status == 1)
                                 {
-                                    string json = responseGetDefect.data.ToString();
-                                    var data = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(json);
-
-                                    var countsByMdCode = data
-                                        .Skip(startIndex) // ข้าม index ตามที่กำหนด
-                                        .Take(endIndex - startIndex + 1) // เลือกข้อมูลตาม index ที่กำหนด
-                                        .GroupBy(items => items["md_code"].ToString()) // กลุ่มข้อมูลตามค่าของ md_code
-                                        .Select(group => new { MdCode = group.Key, Count = group.Count() }); // นับจำนวนรายการแยกตามค่าของ md_code พร้อมกับ index
-
-                                    // แสดงผลลัพธ์
-                                    foreach (var countByMdCode in countsByMdCode)
-                                    {
-                                        qrDefectDetail += $"{ countByMdCode.MdCode} = {countByMdCode.Count}";
-                                        if (qrDefectDetail != null)
-                                        {
-                                            qrDefectDetail += " | ";
-                                        }
-
-                                    }
-
-                                    if (qrDefectDetail != null || qrDefectDetail == "")
-                                    {
-                                        qrDefectDetail = qrDefectDetail.Substring(0, qrDefectDetail.Length - 3);
-                                    }
-                                    //Console.WriteLine(qrDefectDetail);
-
-                                    //operationData.partnotagfa = "SB03S400004-B";
-                                    /**/string parameter = $"?partNumber={operationData.partnotagfa}";
-                                    dynamic resultLOCATION = await api.CurGetRequestAsync("http://192.168.161.77/apiSystem/exp/getItemMaster", parameter);
-                                    string location = null;
-                                    foreach (var itemLOCATION in resultLOCATION)
-                                    {
-                                        location = itemLOCATION.LOCATION;
-                                    }
-
-                                    //string location = null;
-
-
-                                    TagDefect.printTagQgate(qrcodeDefect, qrDefectDetail, "NC", (i > 9) ? "0" + i : "00" + i, location);/**/
-
+                                    PrintTagDefect TagDefect = new PrintTagDefect();
+                                    TagDefect.printTagDefect(qrcodeDefect, qrDefectDetail, "NC", (i > 9) ? "0" + i : "00" + i, location, QTY.ToString(),
+                                                            operationData.partnotagfa, operationData.partNoName, operationData.partline, operationData.partline, operationData.partworkshift);/**/                     
+                                
                                     qrDefectDetail = "";
                                 }
                                 else
@@ -944,15 +952,11 @@ namespace QGate_system
                                     MessageBox.Show("Error system !!! : insert tag defect unsuccessful");
                                 }
 
-
-                               
                             }
                         }
-                        
                     }
                     else
                     {
-                        //Console.WriteLine("NG defect");
                         var dateGetDefect = new
                         {
                             countID = operationData.countDMCDefectNGId
@@ -961,9 +965,10 @@ namespace QGate_system
                         dynamic responseGetDefect = await api.CurPostRequestAsync("Operation/get_printCountDefectTotal/", dateGetDefectJson);
                         //NC
 
-                        //Console.WriteLine("responseGetWi : " + item);
                         if (responseGetWi.Status == 1)
                         {
+                            int CountDefect = item.idc_count;
+                            int QTY;
                             string qrcodeDefect;
                             double loopPrintTagDefect = (double)item.idc_count / int.Parse(operationData.partsnp);
 
@@ -975,7 +980,6 @@ namespace QGate_system
                                 spacedefectQty += "0";
                             }
 
-
                             int startIndex = 0;
                             int endIndex = 0;
                             string qrDefectDetail = "";
@@ -985,64 +989,78 @@ namespace QGate_system
                                 Console.WriteLine("print NG");
                                 qrcodeDefect = String.Concat("DF ", 1, " ", operationData.partline, " ", responseGetWi.wi, " ", scanTag.genLot(DateTime.Now),
                                                               " ", (i > 9) ? "0" + i : "00" + i, " ", spacedefectQty + operationData.partsnp, " ", operationData.partnotagfa);
-                                //Console.WriteLine(qrcodeDefect);
+
+                                if (CountDefect / int.Parse(operationData.partsnp) < 1)
+                                {
+                                    QTY = CountDefect;
+                                    CountDefect = 0;
+                                }
+                                else
+                                {
+                                    QTY = int.Parse(operationData.partsnp);
+                                    CountDefect = CountDefect - int.Parse(operationData.partsnp);
+                                }
 
                                 startIndex = i * int.Parse(operationData.partsnp) - int.Parse(operationData.partsnp); //( i == 1)? 0 : i *  -snp
                                 endIndex = startIndex + int.Parse(operationData.partsnp) - 1;
+
+
+                                string json = responseGetDefect.data.ToString();
+                                var data = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(json);
+
+                                var countsByMdCode = data
+                                    .Skip(startIndex) // ข้าม index ตามที่กำหนด
+                                    .Take(endIndex - startIndex + 1) // เลือกข้อมูลตาม index ที่กำหนด
+                                    .GroupBy(items => items["md_code"].ToString()) // กลุ่มข้อมูลตามค่าของ md_code
+                                    .Select(group => new { MdCode = group.Key, Count = group.Count() }); // นับจำนวนรายการแยกตามค่าของ md_code พร้อมกับ index
+
+                                // แสดงผลลัพธ์
+                                foreach (var countByMdCode in countsByMdCode)
+                                {
+                                    qrDefectDetail += $"{ countByMdCode.MdCode} = {countByMdCode.Count}";
+                                    if (qrDefectDetail != null)
+                                    {
+                                        qrDefectDetail += " | ";
+                                    }
+                                }
+
+                                if (qrDefectDetail != null || qrDefectDetail == "")
+                                {
+                                    qrDefectDetail = qrDefectDetail.Substring(0, qrDefectDetail.Length - 3);
+                                }
+                                //Console.WriteLine(qrDefectDetail);
+
+                                //operationData.partnotagfa = "SB03S400004-B";
+                                /**/
+                                string parameter = $"?partNumber={operationData.partnotagfa}";
+                                dynamic resultLOCATION = await api.CurGetRequestAsync("http://192.168.161.77/apiSystem/exp/getItemMaster", parameter);
+                                string location = null;
+                                foreach (var itemLOCATION in resultLOCATION)
+                                {
+                                    location = itemLOCATION.LOCATION;
+                                }
 
                                 var dateInsDefect = new
                                 {
                                     countID = operationData.countDMCDefectNGId,
                                     CodeDefect = qrcodeDefect,
                                     box = (i > 9) ? "0" + i : "00" + i,
+                                    DefectQrDetail = qrDefectDetail,
                                     login_user = Session.Userlogin
                                 };
-                                //Console.WriteLine("dateInsDefect : " + dateInsDefect);
 
                                 var dateInsDefectJson = JsonConvert.SerializeObject(dateInsDefect);
                                 dynamic responseInsDefect = await api.CurPostRequestAsync("OperationIns/insert_TagDefect/", dateInsDefectJson);
 
                                 if (responseInsDefect.Status == 1)
                                 {
-                                    string json = responseGetDefect.data.ToString();
-                                    var data = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(json);
+                                    //MessageBox.Show("qty : " + QTY.ToString());
+                                    //MessageBox.Show(countsByMdCode.ToString());
+                                    //MessageBox.Show((item.idc_count - (i * int.Parse(operationData.partsnp))).ToString());
 
-                                    var countsByMdCode = data
-                                        .Skip(startIndex) // ข้าม index ตามที่กำหนด
-                                        .Take(endIndex - startIndex + 1) // เลือกข้อมูลตาม index ที่กำหนด
-                                        .GroupBy(items => items["md_code"].ToString()) // กลุ่มข้อมูลตามค่าของ md_code
-                                        .Select(group => new { MdCode = group.Key, Count = group.Count() }); // นับจำนวนรายการแยกตามค่าของ md_code พร้อมกับ index
-
-                                    // แสดงผลลัพธ์
-                                    foreach (var countByMdCode in countsByMdCode)
-                                    {
-                                        qrDefectDetail += $"{ countByMdCode.MdCode} = {countByMdCode.Count}";
-                                        if (qrDefectDetail != null)
-                                        {
-                                            qrDefectDetail += " | ";
-                                        }
-
-                                    }
-
-                                    if (qrDefectDetail != null || qrDefectDetail == "")
-                                    {
-                                        qrDefectDetail = qrDefectDetail.Substring(0, qrDefectDetail.Length - 3);
-                                    }
-                                    //Console.WriteLine(qrDefectDetail);
-
-                                    //operationData.partnotagfa = "SB03S400004-B";
-                                    /**/string parameter = $"?partNumber={operationData.partnotagfa}";
-                                    dynamic resultLOCATION = await api.CurGetRequestAsync("http://192.168.161.77/apiSystem/exp/getItemMaster", parameter);
-                                    string location = null;
-                                    foreach (var itemLOCATION in resultLOCATION)
-                                    {
-                                        location = itemLOCATION.LOCATION;
-                                    }
-
-                                    //string location = null;
-
-
-                                    TagDefect.printTagQgate(qrcodeDefect, qrDefectDetail, "NG", (i > 9) ? "0" + i : "00" + i, location);/**/
+                                    PrintTagDefect TagDefect = new PrintTagDefect();
+                                    TagDefect.printTagDefect(qrcodeDefect, qrDefectDetail, "NG", (i > 9) ? "0" + i : "00" + i, location, QTY.ToString(),
+                                                            operationData.partnotagfa, operationData.partNoName, operationData.partline, operationData.partline, operationData.partworkshift);/**/
 
                                     qrDefectDetail = "";
                                 }

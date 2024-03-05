@@ -39,22 +39,28 @@ namespace QGate_system
             this.cbPartNo = new System.Windows.Forms.ComboBox();
             this.cbLotNo = new System.Windows.Forms.ComboBox();
             this.cbTypeDefect = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.lbZone = new System.Windows.Forms.Label();
             this.lbStation = new System.Windows.Forms.Label();
+            this.pbScanPrint = new System.Windows.Forms.PictureBox();
+            this.pbListPrint = new System.Windows.Forms.PictureBox();
+            this.pbPrint = new System.Windows.Forms.PictureBox();
+            this.pbClear = new System.Windows.Forms.PictureBox();
+            this.pbBackReprintToMenu = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbScanPrint)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbListPrint)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPrint)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbClear)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbBackReprintToMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label1.Location = new System.Drawing.Point(97, 85);
+            this.label1.Location = new System.Drawing.Point(129, 105);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(166, 24);
+            this.label1.Size = new System.Drawing.Size(215, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Reprint Tag Defect";
             // 
@@ -66,10 +72,13 @@ namespace QGate_system
             this.lvLotNO,
             this.lvBoxNo});
             this.lvDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lvDetail.FullRowSelect = true;
+            this.lvDetail.GridLines = true;
             this.lvDetail.HideSelection = false;
-            this.lvDetail.Location = new System.Drawing.Point(30, 231);
+            this.lvDetail.Location = new System.Drawing.Point(40, 284);
+            this.lvDetail.Margin = new System.Windows.Forms.Padding(4);
             this.lvDetail.Name = "lvDetail";
-            this.lvDetail.Size = new System.Drawing.Size(740, 270);
+            this.lvDetail.Size = new System.Drawing.Size(985, 331);
             this.lvDetail.TabIndex = 1;
             this.lvDetail.UseCompatibleStateImageBehavior = false;
             this.lvDetail.View = System.Windows.Forms.View.Details;
@@ -100,9 +109,10 @@ namespace QGate_system
             this.cbDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.cbDate.FormattingEnabled = true;
-            this.cbDate.Location = new System.Drawing.Point(132, 118);
+            this.cbDate.Location = new System.Drawing.Point(176, 145);
+            this.cbDate.Margin = new System.Windows.Forms.Padding(4);
             this.cbDate.Name = "cbDate";
-            this.cbDate.Size = new System.Drawing.Size(194, 32);
+            this.cbDate.Size = new System.Drawing.Size(257, 37);
             this.cbDate.TabIndex = 9;
             // 
             // cbPartNo
@@ -111,9 +121,10 @@ namespace QGate_system
             this.cbPartNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbPartNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.cbPartNo.FormattingEnabled = true;
-            this.cbPartNo.Location = new System.Drawing.Point(132, 181);
+            this.cbPartNo.Location = new System.Drawing.Point(176, 223);
+            this.cbPartNo.Margin = new System.Windows.Forms.Padding(4);
             this.cbPartNo.Name = "cbPartNo";
-            this.cbPartNo.Size = new System.Drawing.Size(194, 32);
+            this.cbPartNo.Size = new System.Drawing.Size(257, 37);
             this.cbPartNo.TabIndex = 10;
             // 
             // cbLotNo
@@ -122,9 +133,10 @@ namespace QGate_system
             this.cbLotNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbLotNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.cbLotNo.FormattingEnabled = true;
-            this.cbLotNo.Location = new System.Drawing.Point(450, 181);
+            this.cbLotNo.Location = new System.Drawing.Point(600, 223);
+            this.cbLotNo.Margin = new System.Windows.Forms.Padding(4);
             this.cbLotNo.Name = "cbLotNo";
-            this.cbLotNo.Size = new System.Drawing.Size(140, 32);
+            this.cbLotNo.Size = new System.Drawing.Size(185, 37);
             this.cbLotNo.TabIndex = 11;
             // 
             // cbTypeDefect
@@ -133,58 +145,20 @@ namespace QGate_system
             this.cbTypeDefect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbTypeDefect.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.cbTypeDefect.FormattingEnabled = true;
-            this.cbTypeDefect.Location = new System.Drawing.Point(700, 181);
+            this.cbTypeDefect.Location = new System.Drawing.Point(933, 223);
+            this.cbTypeDefect.Margin = new System.Windows.Forms.Padding(4);
             this.cbTypeDefect.Name = "cbTypeDefect";
-            this.cbTypeDefect.Size = new System.Drawing.Size(65, 32);
+            this.cbTypeDefect.Size = new System.Drawing.Size(85, 37);
             this.cbTypeDefect.TabIndex = 12;
-            // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(454, 513);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(155, 69);
-            this.label2.TabIndex = 13;
-            // 
-            // label3
-            // 
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(615, 513);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(157, 69);
-            this.label3.TabIndex = 14;
-            // 
-            // label4
-            // 
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Location = new System.Drawing.Point(27, 513);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(157, 69);
-            this.label4.TabIndex = 15;
-            // 
-            // label5
-            // 
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Location = new System.Drawing.Point(452, 97);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(157, 69);
-            this.label5.TabIndex = 16;
-            // 
-            // label6
-            // 
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Location = new System.Drawing.Point(618, 97);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(157, 69);
-            this.label6.TabIndex = 17;
             // 
             // lbZone
             // 
             this.lbZone.BackColor = System.Drawing.Color.Transparent;
             this.lbZone.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.lbZone.Location = new System.Drawing.Point(463, 49);
+            this.lbZone.Location = new System.Drawing.Point(617, 60);
+            this.lbZone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbZone.Name = "lbZone";
-            this.lbZone.Size = new System.Drawing.Size(83, 23);
+            this.lbZone.Size = new System.Drawing.Size(111, 28);
             this.lbZone.TabIndex = 18;
             this.lbZone.Text = "XX";
             // 
@@ -192,26 +166,81 @@ namespace QGate_system
             // 
             this.lbStation.BackColor = System.Drawing.Color.Transparent;
             this.lbStation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.lbStation.Location = new System.Drawing.Point(740, 49);
+            this.lbStation.Location = new System.Drawing.Point(987, 60);
+            this.lbStation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbStation.Name = "lbStation";
-            this.lbStation.Size = new System.Drawing.Size(54, 23);
+            this.lbStation.Size = new System.Drawing.Size(72, 28);
             this.lbStation.TabIndex = 19;
             this.lbStation.Text = "XX";
             // 
+            // pbScanPrint
+            // 
+            this.pbScanPrint.BackColor = System.Drawing.Color.Transparent;
+            this.pbScanPrint.Location = new System.Drawing.Point(823, 116);
+            this.pbScanPrint.Margin = new System.Windows.Forms.Padding(4);
+            this.pbScanPrint.Name = "pbScanPrint";
+            this.pbScanPrint.Size = new System.Drawing.Size(216, 94);
+            this.pbScanPrint.TabIndex = 20;
+            this.pbScanPrint.TabStop = false;
+            this.pbScanPrint.Click += new System.EventHandler(this.pbScanPrint_Click);
+            // 
+            // pbListPrint
+            // 
+            this.pbListPrint.BackColor = System.Drawing.Color.Transparent;
+            this.pbListPrint.Location = new System.Drawing.Point(600, 116);
+            this.pbListPrint.Margin = new System.Windows.Forms.Padding(4);
+            this.pbListPrint.Name = "pbListPrint";
+            this.pbListPrint.Size = new System.Drawing.Size(216, 94);
+            this.pbListPrint.TabIndex = 21;
+            this.pbListPrint.TabStop = false;
+            // 
+            // pbPrint
+            // 
+            this.pbPrint.BackColor = System.Drawing.Color.Transparent;
+            this.pbPrint.Location = new System.Drawing.Point(825, 630);
+            this.pbPrint.Margin = new System.Windows.Forms.Padding(4);
+            this.pbPrint.Name = "pbPrint";
+            this.pbPrint.Size = new System.Drawing.Size(211, 89);
+            this.pbPrint.TabIndex = 22;
+            this.pbPrint.TabStop = false;
+            this.pbPrint.Click += new System.EventHandler(this.pbPrint_Click);
+            // 
+            // pbClear
+            // 
+            this.pbClear.BackColor = System.Drawing.Color.Transparent;
+            this.pbClear.Location = new System.Drawing.Point(603, 630);
+            this.pbClear.Margin = new System.Windows.Forms.Padding(4);
+            this.pbClear.Name = "pbClear";
+            this.pbClear.Size = new System.Drawing.Size(211, 89);
+            this.pbClear.TabIndex = 23;
+            this.pbClear.TabStop = false;
+            this.pbClear.Click += new System.EventHandler(this.pbClear_Click);
+            // 
+            // pbBackReprintToMenu
+            // 
+            this.pbBackReprintToMenu.BackColor = System.Drawing.Color.Transparent;
+            this.pbBackReprintToMenu.Location = new System.Drawing.Point(32, 630);
+            this.pbBackReprintToMenu.Margin = new System.Windows.Forms.Padding(4);
+            this.pbBackReprintToMenu.Name = "pbBackReprintToMenu";
+            this.pbBackReprintToMenu.Size = new System.Drawing.Size(211, 89);
+            this.pbBackReprintToMenu.TabIndex = 24;
+            this.pbBackReprintToMenu.TabStop = false;
+            this.pbBackReprintToMenu.Click += new System.EventHandler(this.pbBackReprintToMenu_Click);
+            // 
             // qgateReprintDefect
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::QGate_system.Properties.Resources.ReprintDefectDate11;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(1067, 738);
+            this.Controls.Add(this.pbBackReprintToMenu);
+            this.Controls.Add(this.pbClear);
+            this.Controls.Add(this.pbPrint);
+            this.Controls.Add(this.pbListPrint);
+            this.Controls.Add(this.pbScanPrint);
             this.Controls.Add(this.lbStation);
             this.Controls.Add(this.lbZone);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.cbTypeDefect);
             this.Controls.Add(this.cbLotNo);
             this.Controls.Add(this.cbPartNo);
@@ -219,9 +248,15 @@ namespace QGate_system
             this.Controls.Add(this.lvDetail);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "qgateReprintDefect";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.qgateReprintDefect_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbScanPrint)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbListPrint)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPrint)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbClear)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbBackReprintToMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -239,12 +274,12 @@ namespace QGate_system
         private System.Windows.Forms.ComboBox cbPartNo;
         private System.Windows.Forms.ComboBox cbLotNo;
         private System.Windows.Forms.ComboBox cbTypeDefect;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lbZone;
         private System.Windows.Forms.Label lbStation;
+        private System.Windows.Forms.PictureBox pbScanPrint;
+        private System.Windows.Forms.PictureBox pbListPrint;
+        private System.Windows.Forms.PictureBox pbPrint;
+        private System.Windows.Forms.PictureBox pbClear;
+        private System.Windows.Forms.PictureBox pbBackReprintToMenu;
     }
 }

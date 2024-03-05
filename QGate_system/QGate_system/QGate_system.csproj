@@ -79,12 +79,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="PrintTag.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +133,12 @@
     </Compile>
     <Compile Include="qgateReprintDefect.Designer.cs">
       <DependentUpon>qgateReprintDefect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="qgateReprintDefectScanPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="qgateReprintDefectScanPrint.Designer.cs">
+      <DependentUpon>qgateReprintDefectScanPrint.cs</DependentUpon>
     </Compile>
     <Compile Include="qgateReprintQgate.cs">
       <SubType>Form</SubType>
@@ -296,6 +296,9 @@
     <EmbeddedResource Include="qgateReprintDefect.resx">
       <DependentUpon>qgateReprintDefect.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="qgateReprintDefectScanPrint.resx">
+      <DependentUpon>qgateReprintDefectScanPrint.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="qgateReprintQgate.resx">
       <DependentUpon>qgateReprintQgate.cs</DependentUpon>
     </EmbeddedResource>
@@ -370,6 +373,7 @@
   <ItemGroup>
     <Content Include="3-_3_.ico" />
     <Content Include="icon.ico" />
+    <None Include="Resources\ReprintDefectScanTag.png" />
     <None Include="Resources\ReprintQgateScanTag.png" />
     <None Include="Resources\ReprintDefectDate11.png" />
     <None Include="Resources\ReprintQgateDate2.png" />

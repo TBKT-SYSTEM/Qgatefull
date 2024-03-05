@@ -69,6 +69,7 @@ namespace QGate_system
             this.pbScanPrint.Size = new System.Drawing.Size(161, 70);
             this.pbScanPrint.TabIndex = 1;
             this.pbScanPrint.TabStop = false;
+            this.pbScanPrint.Click += new System.EventHandler(this.pbScanPrint_Click);
             // 
             // lbZone
             // 
@@ -130,7 +131,7 @@ namespace QGate_system
             this.tbScanTag.Name = "tbScanTag";
             this.tbScanTag.Size = new System.Drawing.Size(321, 31);
             this.tbScanTag.TabIndex = 22;
-            this.tbScanTag.KeyDown += new System.Windows.Forms.KeyEventHandler(this.bScanTag_KeyDown);
+            this.tbScanTag.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbScanTag_KeyDown);
             // 
             // lbPartNo
             // 
@@ -235,7 +236,6 @@ namespace QGate_system
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "qgateReprintQgateScanPrint";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "qgateReprintQgateScanPrint";
             this.Load += new System.EventHandler(this.qgateReprintQgateScanPrint_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbListPrint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbScanPrint)).EndInit();

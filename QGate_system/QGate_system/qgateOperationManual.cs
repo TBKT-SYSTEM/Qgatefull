@@ -754,7 +754,7 @@ namespace QGate_system
                     }
 
 
-                    printTag.printTagQgate(" ", " ", lbBoxNo.Text, tagQgate, QrProduct, location);
+                    printTag.printTagQgate(" ", operationData.partnotagfa, operationData.partNoName, operationData.model, " ", lbBoxNo.Text, tagQgate, QrProduct, location, tbCounter.Text, operationData.partlotno, operationData.partworkshift, operationData.partline, LocationData.Phase);
                 }
                 else
                 {
@@ -772,7 +772,6 @@ namespace QGate_system
         {
             //object[] CountDefect = new object[5];
             qgateScanTag scanTag = new qgateScanTag();
-            PrintTagDefect TagDefect = new PrintTagDefect();
 
             //try
             //{
@@ -793,7 +792,6 @@ namespace QGate_system
                 Datecur = dateTime.ToString("yyyy-MM-dd");
                 Datetomor = previousDay.ToString("yyyy-MM-dd");
             }
-
 
             var dataGetCountDefect = new
             {
@@ -822,14 +820,13 @@ namespace QGate_system
                     {
                         //Console.WriteLine("NC defect");
 
-
                         var dateGetDefect = new
                         {
                             countID = operationData.countDefectNCId
                         };
                         var dateGetDefectJson = JsonConvert.SerializeObject(dateGetDefect);
                         dynamic responseGetDefect = await api.CurPostRequestAsync("Operation/get_printCountDefectTotal/", dateGetDefectJson);
-                        //NC
+                        // NC
 
                         //Console.WriteLine("responseGetWi : " + item);
                         if (responseGetWi.Status == 1)
@@ -888,21 +885,42 @@ namespace QGate_system
                                 }
                                 //Console.WriteLine(qrDefectDetail);
 
+                                //operationData.partnotagfa = "SB03S400004-B";
+                                /**/
                                 string parameter = $"?partNumber={operationData.partnotagfa}";
                                 dynamic resultLOCATION = await api.CurGetRequestAsync("http://192.168.161.77/apiSystem/exp/getItemMaster", parameter);
-
-                                //Console.WriteLine("get location : " + resultLOCATION);
-
                                 string location = null;
                                 foreach (var itemLOCATION in resultLOCATION)
                                 {
                                     location = itemLOCATION.LOCATION;
                                 }
 
+                                var dateInsDefect = new
+                                {
+                                    countID = operationData.countDMCDefectNGId,
+                                    CodeDefect = qrcodeDefect,
+                                    box = (i > 9) ? "0" + i : "00" + i,
+                                    DefectQrDetail = qrDefectDetail,
+                                    login_user = Session.Userlogin
+                                };
 
-                                TagDefect.printTagQgate(qrcodeDefect, qrDefectDetail, "NC", (i > 9) ? "0" + i : "00" + i, location);/**/
+                                var dateInsDefectJson = JsonConvert.SerializeObject(dateInsDefect);
+                                dynamic responseInsDefect = await api.CurPostRequestAsync("OperationIns/insert_TagDefect/", dateInsDefectJson);
 
-                                qrDefectDetail = "";
+                                if (responseInsDefect.Status == 1)
+                                {
+                                    //string location = null;
+
+                                    PrintTagDefect TagDefect = new PrintTagDefect();
+                                    TagDefect.printTagDefect(qrcodeDefect, qrDefectDetail, "NC", (i > 9) ? "0" + i : "00" + i, location, (loopPrintTagDefect*i).ToString(),
+                                                            operationData.partnotagfa, operationData.partNoName, operationData.partline, operationData.partline, operationData.partworkshift);/**/
+
+                                    qrDefectDetail = "";
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Error system !!! : insert tag defect unsuccessful");
+                                }
                             }
                         }
 
@@ -975,24 +993,43 @@ namespace QGate_system
                                 }
                                 //Console.WriteLine(qrDefectDetail);
 
+                                //operationData.partnotagfa = "SB03S400004-B";
+                                /**/
                                 string parameter = $"?partNumber={operationData.partnotagfa}";
                                 dynamic resultLOCATION = await api.CurGetRequestAsync("http://192.168.161.77/apiSystem/exp/getItemMaster", parameter);
-
-                                //Console.WriteLine("get location : " + resultLOCATION);
-
                                 string location = null;
                                 foreach (var itemLOCATION in resultLOCATION)
                                 {
                                     location = itemLOCATION.LOCATION;
                                 }
 
-                                TagDefect.printTagQgate(qrcodeDefect, qrDefectDetail, "NG", (i > 9) ? "0" + i : "00" + i, location);/**/
+                                var dateInsDefect = new
+                                {
+                                    countID = operationData.countDMCDefectNGId,
+                                    CodeDefect = qrcodeDefect,
+                                    box = (i > 9) ? "0" + i : "00" + i,
+                                    DefectQrDetail = qrDefectDetail,
+                                    login_user = Session.Userlogin
+                                };
 
-                                qrDefectDetail = "";
+                                var dateInsDefectJson = JsonConvert.SerializeObject(dateInsDefect);
+                                dynamic responseInsDefect = await api.CurPostRequestAsync("OperationIns/insert_TagDefect/", dateInsDefectJson);
+
+                                if (responseInsDefect.Status == 1)
+                                {
+                                    PrintTagDefect TagDefect = new PrintTagDefect();
+                                    TagDefect.printTagDefect(qrcodeDefect, qrDefectDetail, "NG", (i > 9) ? "0" + i : "00" + i, location, (loopPrintTagDefect * i).ToString(),
+                                                            operationData.partnotagfa, operationData.partNoName, operationData.partline, operationData.partline, operationData.partworkshift);/**/
+
+                                    qrDefectDetail = "";
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Error system !!! : insert tag defect unsuccessful");
+                                }
                             }
                         }
                     }
-
                 }
             }
             else
