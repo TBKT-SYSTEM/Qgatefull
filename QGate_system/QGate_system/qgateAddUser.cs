@@ -17,6 +17,10 @@ namespace QGate_system
         qgateAlert formAlret = new qgateAlert();
         memberData memberData = new memberData();
 
+
+        Session Session = Session.Instance;
+        operationData operationData = operationData.Instance;
+
         public qgateAddUser()
         {
             InitializeComponent();
@@ -39,12 +43,14 @@ namespace QGate_system
 
                 if (resultResponse.mad_alias == "success-login")
                 {
+
                     var dataUserLogin = new
                     {
                         PathPic = "http://192.168.161.207/tbkk_shopfloor/asset/img_emp/" + resultResponse.emp_code + ".jpg",
                         EmpCode = resultResponse.emp_code,
                         NameUser = resultResponse.emp_name
                     };
+
                     string emp_code = resultResponse.emp_code;
 
                     if (memberData.chk_RepeatMember(emp_code))
@@ -59,8 +65,20 @@ namespace QGate_system
                     }
                     else
                     {
-                        var memberArr = new string[2] { resultResponse.emp_code, resultResponse.emp_name };
+                        var datainsertworkerDetail = new
+                        {
+                            isdt_id = operationData.isdt_id,
+                            Worker = resultResponse.emp_code
+                        };
+                        var datainsertworkerrDetailJson = JsonConvert.SerializeObject(datainsertworkerDetail);
+                        dynamic responsedatainsertworkerrDetail = await api.CurPostRequestAsync("OperationIns/insert_staff_work_detail/", datainsertworkerrDetailJson);
+                        if (responsedatainsertworkerrDetail.Status == 0)
+                        {
+                            MessageBox.Show("Error System!!! : insert worker Detail");
+                        }
 
+
+                        var memberArr = new string[2] { resultResponse.emp_code, resultResponse.emp_name };
                         memberData.memberList.Add(memberArr);
                         memberData.populateItems();
                     }

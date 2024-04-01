@@ -44,7 +44,6 @@ namespace QGate_system
             this.pbPrint = new System.Windows.Forms.PictureBox();
             this.pbListPrint = new System.Windows.Forms.PictureBox();
             this.pbScanPrint = new System.Windows.Forms.PictureBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pbBackReprintToMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPrint)).BeginInit();
@@ -58,10 +57,9 @@ namespace QGate_system
             this.cbDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.cbDate.FormattingEnabled = true;
-            this.cbDate.Location = new System.Drawing.Point(176, 145);
-            this.cbDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbDate.Location = new System.Drawing.Point(132, 118);
             this.cbDate.Name = "cbDate";
-            this.cbDate.Size = new System.Drawing.Size(257, 37);
+            this.cbDate.Size = new System.Drawing.Size(194, 32);
             this.cbDate.TabIndex = 9;
             this.cbDate.SelectedIndexChanged += new System.EventHandler(this.cbDate_SelectedIndexChanged);
             // 
@@ -71,10 +69,9 @@ namespace QGate_system
             this.cbPartNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbPartNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.cbPartNo.FormattingEnabled = true;
-            this.cbPartNo.Location = new System.Drawing.Point(176, 223);
-            this.cbPartNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbPartNo.Location = new System.Drawing.Point(132, 181);
             this.cbPartNo.Name = "cbPartNo";
-            this.cbPartNo.Size = new System.Drawing.Size(257, 37);
+            this.cbPartNo.Size = new System.Drawing.Size(194, 32);
             this.cbPartNo.TabIndex = 10;
             this.cbPartNo.SelectedIndexChanged += new System.EventHandler(this.cbPartNo_SelectedIndexChanged);
             // 
@@ -84,10 +81,9 @@ namespace QGate_system
             this.cbLotNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbLotNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.cbLotNo.FormattingEnabled = true;
-            this.cbLotNo.Location = new System.Drawing.Point(600, 223);
-            this.cbLotNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbLotNo.Location = new System.Drawing.Point(450, 181);
             this.cbLotNo.Name = "cbLotNo";
-            this.cbLotNo.Size = new System.Drawing.Size(185, 37);
+            this.cbLotNo.Size = new System.Drawing.Size(140, 32);
             this.cbLotNo.TabIndex = 11;
             this.cbLotNo.SelectedIndexChanged += new System.EventHandler(this.cbLotNo_SelectedIndexChanged);
             // 
@@ -102,10 +98,9 @@ namespace QGate_system
             this.lvDetail.FullRowSelect = true;
             this.lvDetail.GridLines = true;
             this.lvDetail.HideSelection = false;
-            this.lvDetail.Location = new System.Drawing.Point(40, 284);
-            this.lvDetail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lvDetail.Location = new System.Drawing.Point(30, 231);
             this.lvDetail.Name = "lvDetail";
-            this.lvDetail.Size = new System.Drawing.Size(985, 331);
+            this.lvDetail.Size = new System.Drawing.Size(747, 270);
             this.lvDetail.TabIndex = 12;
             this.lvDetail.UseCompatibleStateImageBehavior = false;
             this.lvDetail.View = System.Windows.Forms.View.Details;
@@ -118,7 +113,7 @@ namespace QGate_system
             // lvPartNo
             // 
             this.lvPartNo.Text = "PART NO";
-            this.lvPartNo.Width = 330;
+            this.lvPartNo.Width = 469;
             // 
             // lvLotNO
             // 
@@ -134,10 +129,9 @@ namespace QGate_system
             // 
             this.lbZone.BackColor = System.Drawing.Color.Transparent;
             this.lbZone.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.lbZone.Location = new System.Drawing.Point(617, 60);
-            this.lbZone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbZone.Location = new System.Drawing.Point(463, 49);
             this.lbZone.Name = "lbZone";
-            this.lbZone.Size = new System.Drawing.Size(111, 28);
+            this.lbZone.Size = new System.Drawing.Size(83, 23);
             this.lbZone.TabIndex = 13;
             this.lbZone.Text = "XX";
             // 
@@ -145,20 +139,18 @@ namespace QGate_system
             // 
             this.lbStation.BackColor = System.Drawing.Color.Transparent;
             this.lbStation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.lbStation.Location = new System.Drawing.Point(987, 60);
-            this.lbStation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbStation.Location = new System.Drawing.Point(740, 49);
             this.lbStation.Name = "lbStation";
-            this.lbStation.Size = new System.Drawing.Size(72, 28);
+            this.lbStation.Size = new System.Drawing.Size(54, 23);
             this.lbStation.TabIndex = 14;
             this.lbStation.Text = "XX";
             // 
             // pbBackReprintToMenu
             // 
             this.pbBackReprintToMenu.BackColor = System.Drawing.Color.Transparent;
-            this.pbBackReprintToMenu.Location = new System.Drawing.Point(32, 630);
-            this.pbBackReprintToMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbBackReprintToMenu.Location = new System.Drawing.Point(24, 512);
             this.pbBackReprintToMenu.Name = "pbBackReprintToMenu";
-            this.pbBackReprintToMenu.Size = new System.Drawing.Size(211, 89);
+            this.pbBackReprintToMenu.Size = new System.Drawing.Size(158, 72);
             this.pbBackReprintToMenu.TabIndex = 15;
             this.pbBackReprintToMenu.TabStop = false;
             this.pbBackReprintToMenu.Click += new System.EventHandler(this.pbBackReprintToMenu_Click);
@@ -166,10 +158,9 @@ namespace QGate_system
             // pbClear
             // 
             this.pbClear.BackColor = System.Drawing.Color.Transparent;
-            this.pbClear.Location = new System.Drawing.Point(603, 630);
-            this.pbClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbClear.Location = new System.Drawing.Point(452, 512);
             this.pbClear.Name = "pbClear";
-            this.pbClear.Size = new System.Drawing.Size(211, 89);
+            this.pbClear.Size = new System.Drawing.Size(158, 72);
             this.pbClear.TabIndex = 16;
             this.pbClear.TabStop = false;
             this.pbClear.Click += new System.EventHandler(this.pbClear_Click);
@@ -177,10 +168,9 @@ namespace QGate_system
             // pbPrint
             // 
             this.pbPrint.BackColor = System.Drawing.Color.Transparent;
-            this.pbPrint.Location = new System.Drawing.Point(825, 630);
-            this.pbPrint.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbPrint.Location = new System.Drawing.Point(619, 512);
             this.pbPrint.Name = "pbPrint";
-            this.pbPrint.Size = new System.Drawing.Size(211, 89);
+            this.pbPrint.Size = new System.Drawing.Size(158, 72);
             this.pbPrint.TabIndex = 17;
             this.pbPrint.TabStop = false;
             this.pbPrint.Click += new System.EventHandler(this.pbPrint_Click);
@@ -188,45 +178,29 @@ namespace QGate_system
             // pbListPrint
             // 
             this.pbListPrint.BackColor = System.Drawing.Color.Transparent;
-            this.pbListPrint.Location = new System.Drawing.Point(600, 116);
-            this.pbListPrint.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbListPrint.Location = new System.Drawing.Point(450, 94);
             this.pbListPrint.Name = "pbListPrint";
-            this.pbListPrint.Size = new System.Drawing.Size(216, 94);
+            this.pbListPrint.Size = new System.Drawing.Size(162, 76);
             this.pbListPrint.TabIndex = 18;
             this.pbListPrint.TabStop = false;
             // 
             // pbScanPrint
             // 
             this.pbScanPrint.BackColor = System.Drawing.Color.Transparent;
-            this.pbScanPrint.Location = new System.Drawing.Point(823, 116);
-            this.pbScanPrint.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbScanPrint.Location = new System.Drawing.Point(617, 94);
             this.pbScanPrint.Name = "pbScanPrint";
-            this.pbScanPrint.Size = new System.Drawing.Size(216, 94);
+            this.pbScanPrint.Size = new System.Drawing.Size(162, 76);
             this.pbScanPrint.TabIndex = 19;
             this.pbScanPrint.TabStop = false;
             this.pbScanPrint.Click += new System.EventHandler(this.pbScanPrint_Click);
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(69, 75);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dateTimePicker1.MaxDate = new System.DateTime(2024, 3, 5, 0, 0, 0, 0);
-            this.dateTimePicker1.MinDate = new System.DateTime(2023, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(257, 23);
-            this.dateTimePicker1.TabIndex = 20;
-            this.dateTimePicker1.Value = new System.DateTime(2024, 3, 5, 0, 0, 0, 0);
-            // 
             // qgateReprintQgate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::QGate_system.Properties.Resources.ReprintQgateDate2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1067, 738);
-            this.Controls.Add(this.dateTimePicker1);
+            this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.pbScanPrint);
             this.Controls.Add(this.pbListPrint);
             this.Controls.Add(this.pbPrint);
@@ -239,7 +213,6 @@ namespace QGate_system
             this.Controls.Add(this.cbPartNo);
             this.Controls.Add(this.cbDate);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "qgateReprintQgate";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.qgateReprintQgate_Load);
@@ -269,6 +242,5 @@ namespace QGate_system
         private System.Windows.Forms.PictureBox pbPrint;
         private System.Windows.Forms.PictureBox pbListPrint;
         private System.Windows.Forms.PictureBox pbScanPrint;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

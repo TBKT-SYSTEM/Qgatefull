@@ -39,8 +39,6 @@ namespace QGate_system
             this.lbStation = new System.Windows.Forms.Label();
             this.tbPartNo = new System.Windows.Forms.TextBox();
             this.CbNumProduct = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbBackToOperation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbConfirm)).BeginInit();
             this.SuspendLayout();
@@ -145,23 +143,6 @@ namespace QGate_system
             this.CbNumProduct.Size = new System.Drawing.Size(184, 33);
             this.CbNumProduct.TabIndex = 59;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(623, 105);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 60;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(517, 107);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 61;
-            // 
             // qgateDefectNc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -169,8 +150,6 @@ namespace QGate_system
             this.BackgroundImage = global::QGate_system.Properties.Resources.DefectNC;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(800, 600);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.CbNumProduct);
             this.Controls.Add(this.tbPartNo);
             this.Controls.Add(this.lbStation);
@@ -202,7 +181,5 @@ namespace QGate_system
         private System.Windows.Forms.Label lbStation;
         internal System.Windows.Forms.TextBox tbPartNo;
         internal System.Windows.Forms.ComboBox CbNumProduct;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
     }
 }

@@ -264,11 +264,11 @@ namespace QGate_system
                     // ใช้ K1 K2 ใน line เช็ค
                     if (tagQgateGlobal.Substring(2,2).Trim() == "K1")
                     {
-                        Phase = "Phase 10";
+                        Phase = "10";
                     }
                     else
                     {
-                        Phase = "Phase 8";
+                        Phase = "8";
                     }
 
 
@@ -287,9 +287,9 @@ namespace QGate_system
                         if (responseDataUpdTagQgateJson.Status == 1)
                         {
                             PrintTag printTag = new PrintTag();
-                            printTag.printTagQgate(" ", tagQgateGlobal.Substring(19, 25).Trim(), partNoName, lbModel.Text, " ", lbBoxNo.Text, tagQgateGlobal, idproduct, location, lbQty.Text, tagQgateGlobal.Substring(58, 4).Trim(), lbShift.Text, tagQgateGlobal.Substring(2, 6).Trim(), Phase);
+                            printTag.printTagQgate(" ", tagQgateGlobal.Substring(19, 25).Trim(), partNoName, lbModel.Text, " ", lbBoxNo.Text, DateTime.Parse(lbCheckDate.Text), tagQgateGlobal, idproduct, location,   lbQty.Text, tagQgateGlobal.Substring(58, 4).Trim(), lbShift.Text, tagQgateGlobal.Substring(2, 6).Trim(), Phase);
 
-
+                            
                         }
                         else
                         {

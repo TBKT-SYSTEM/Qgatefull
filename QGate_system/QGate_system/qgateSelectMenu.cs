@@ -62,7 +62,6 @@ namespace QGate_system
             flpUser.Refresh();
         }
 
-
         private async void qgateSelectMenu_Load(object sender, EventArgs e)
         {
 
@@ -77,6 +76,8 @@ namespace QGate_system
 
             var jsonDataPermis = JsonConvert.SerializeObject(data);
             dynamic dataMenubypermis = await api.CurPostRequestAsync("Login/menuPremis/", jsonDataPermis);
+
+            Console.WriteLine("dataMenubypermis : " + dataMenubypermis);
 
             MenuItem[] userCtrl = new MenuItem[dataMenubypermis.Menu.Count];
 
@@ -116,7 +117,7 @@ namespace QGate_system
             }
         }
 
-        private async void pbLogout_Click(object sender, EventArgs e)
+        public async void pbLogout_Click(object sender, EventArgs e)
         {
             memberData.memberList.Clear();
 
@@ -139,11 +140,13 @@ namespace QGate_system
             int change = flpUser.VerticalScroll.Value - flpUser.VerticalScroll.SmallChange * 30;
             flpUser.AutoScrollPosition = new Point(0, change);
         }
+
         private void flpScrollDown_Click(object sender, EventArgs e)
         {
             int change = flpUser.VerticalScroll.Value + flpUser.VerticalScroll.SmallChange * 30;
             flpUser.AutoScrollPosition = new Point(0, change);
         }
+
     }
 
 

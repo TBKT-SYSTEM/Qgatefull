@@ -15,9 +15,10 @@ namespace QGate_system.API
 {
     public class API
     {
-        //public static string baseUrl = "http://172.21.64.97:1000/";
-        public static string baseUrl = "http://192.168.1.184:1000/";
-        //public static string baseUrl = "http://192.168.43.241:1000/";
+        public static string baseUrl = "http://192.168.161.77:1000/";
+        //public static string baseUrl = "http://172.21.64.41:1000/";
+        //public static string baseUrl = "http://192.168.1.184:1000/";
+        //public static string baseUrl = "http://192.168.99.159:1000/";
         public async Task<object> CurPostRequestAsync(string endpoint, string jsonData)
         {
             try
@@ -27,7 +28,6 @@ namespace QGate_system.API
                     string url = baseUrl + endpoint;
 
                     var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-
                     HttpResponseMessage response = await client.PostAsync(url, content);
 
                     if (response.IsSuccessStatusCode)
@@ -113,10 +113,6 @@ namespace QGate_system.API
                 return $"Error: {ex.Message}";
             }
         }
-
-
-
-
 
         public Bitmap LoadPicture(string url)
         {

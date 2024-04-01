@@ -363,6 +363,9 @@ namespace QGate_system
             {
                 //MessageBox.Show("Type Defect Null");
 
+
+                //(กรณี partNo เดิม) New get box ถ้าเป็น 
+
                 counterNg = 0;
                 BoxNg = 1;
                 counterNc = 0;
@@ -505,7 +508,8 @@ namespace QGate_system
                         productcheckcount = countPlus,
                         productDMC = dmcid,
                         counttime = chkTime,
-                        login_user = Session.Userlogin
+                        login_user = Session.Userlogin,
+                        isdt_id = operationData.isdt_id
                     };
 
                     //MessageBox.Show(dataCount.ToString());
@@ -602,7 +606,8 @@ namespace QGate_system
                         productcheckcount = countDel,
                         productDMC = dmcid,
                         counttime = chkTime,
-                        login_user = Session.Userlogin
+                        login_user = Session.Userlogin,
+                        isdt_id = operationData.isdt_id
                     };
 
                     var dataCountFA = JsonConvert.SerializeObject(dataCount);
@@ -688,7 +693,6 @@ namespace QGate_system
         public async Task GenQRCodeQgate(string QrProduct)
         {
             qgateScanTag qgateScanTag = new qgateScanTag();
-            PrintTag printTag = new PrintTag();
 
             //MessageBox.Show(operationData.partnotagfa.Length.ToString());
 
@@ -753,8 +757,8 @@ namespace QGate_system
                         location = itemLOCATION.LOCATION;
                     }
 
-
-                    printTag.printTagQgate(" ", operationData.partnotagfa, operationData.partNoName, operationData.model, " ", lbBoxNo.Text, tagQgate, QrProduct, location, tbCounter.Text, operationData.partlotno, operationData.partworkshift, operationData.partline, LocationData.Phase);
+                    PrintTag printTag = new PrintTag();
+                    printTag.printTagQgate(" ", operationData.partnotagfa, operationData.partNoName, operationData.model, " ", lbBoxNo.Text, DateTime.Now, tagQgate, QrProduct, location, tbCounter.Text, operationData.partlotno, operationData.partworkshift, operationData.partline, LocationData.Phase);
                 }
                 else
                 {
@@ -842,7 +846,6 @@ namespace QGate_system
                                 spacedefectQty += "0";
                             }
 
-
                             int startIndex = 0;
                             int endIndex = 0;
                             string qrDefectDetail = "";
@@ -913,7 +916,7 @@ namespace QGate_system
 
                                     PrintTagDefect TagDefect = new PrintTagDefect();
                                     TagDefect.printTagDefect(qrcodeDefect, qrDefectDetail, "NC", (i > 9) ? "0" + i : "00" + i, location, (loopPrintTagDefect*i).ToString(),
-                                                            operationData.partnotagfa, operationData.partNoName, operationData.partline, operationData.partline, operationData.partworkshift);/**/
+                                                            operationData.partnotagfa, operationData.partNoName, operationData.model, operationData.partline, operationData.partworkshift, DateTime.Now, LocationData.Phase);/**/
 
                                     qrDefectDetail = "";
                                 }
@@ -1019,7 +1022,7 @@ namespace QGate_system
                                 {
                                     PrintTagDefect TagDefect = new PrintTagDefect();
                                     TagDefect.printTagDefect(qrcodeDefect, qrDefectDetail, "NG", (i > 9) ? "0" + i : "00" + i, location, (loopPrintTagDefect * i).ToString(),
-                                                            operationData.partnotagfa, operationData.partNoName, operationData.partline, operationData.partline, operationData.partworkshift);/**/
+                                                            operationData.partnotagfa, operationData.partNoName, operationData.model, operationData.partline, operationData.partworkshift, DateTime.Now, LocationData.Phase);/**/
 
                                     qrDefectDetail = "";
                                 }

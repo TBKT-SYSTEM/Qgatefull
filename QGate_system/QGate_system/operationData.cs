@@ -47,6 +47,8 @@ namespace QGate_system
         private string _countDMCDefectNGId;
         private string _countDMCDefectNCId;
 
+        private string _isdt_id;
+
         public string tagfaid
         {
             get { return _tagfaid; }
@@ -259,6 +261,15 @@ namespace QGate_system
             set
             {
                 _countDMCDefectNCId = value;
+            }
+        }
+
+        public string isdt_id
+        {
+            get { return _isdt_id; }
+            set
+            {
+                _isdt_id = value;
             }
         }
 

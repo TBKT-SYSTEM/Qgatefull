@@ -17,8 +17,6 @@ namespace QGate_system
         Session Session = Session.Instance;
         QGate_system.API.API api = new QGate_system.API.API();
 
-
-
         public qgateReprintQgate()
         {
             InitializeComponent();
@@ -76,10 +74,11 @@ namespace QGate_system
                 {
                     cbPartNo.Items.Add(new PartNOItem(item.msp_id, item.msp_part_no));
                 }
+
                 // กำหนด MINDate เป็นวันที่ปัจจุบันลบด้วย 3 วัน
-                dateTimePicker1.MinDate = DateTime.Now.AddDays(-2);
+                //dateTimePicker1.MinDate = DateTime.Now.AddDays(-2);
                 // กำหนด MAXDate เป็นวันที่ปัจจุบัน
-                dateTimePicker1.MaxDate = DateTime.Now;
+                //dateTimePicker1.MaxDate = DateTime.Now;
                 
                 
                 cbLotNo.Items.Add("Choose LotNo");
@@ -214,7 +213,7 @@ namespace QGate_system
                 var dataGetReprintQgatejson = JsonConvert.SerializeObject(dataGetReprintQgate);
                 dynamic responsedataGetReprintQgate = await api.CurPostRequestAsync("ReprintQgate/get_DataListviewReprintQgate/", dataGetReprintQgatejson);
 
-                //Console.WriteLine(responsedataGetReprintQgate);
+                Console.WriteLine(responsedataGetReprintQgate);
                 if (responsedataGetReprintQgate.Status == 1)
                 {
                     Console.WriteLine("responsedataGetReprintQgate : " + responsedataGetReprintQgate.data);
@@ -241,7 +240,7 @@ namespace QGate_system
             }
         }
 
-        private async void reprintTagQgate(string IdTagQgate)
+        private async void reprintTagQgate(string IdTagQgate) 
         {
             try
             {
@@ -258,7 +257,79 @@ namespace QGate_system
 
                 if (responsedataGetReprintQgate.Status == 1)
                 {
-                    MessageBox.Show("Getdata ok");
+                    //MessageBox.Show("Getdata ok");
+
+                    string tagQgate = null;
+                    string partNo = null;
+                    string partNoName = null;
+                    string model = null;
+                    string boxNo = null;
+                    string qrProduct = null;
+                    string location = null;
+                    string qty = null;
+                    string lotNo = null;
+                    string shift = null;
+                    string line = null;
+                    string phase = null;
+                    string checkDate = null;
+
+
+                    foreach (var item in responsedataGetReprintQgate.data)
+                    {
+                        tagQgate = item.iotc_tag_qgate;
+                        qrProduct = item.iotc_qgate_qr;
+                    }
+
+                    line = tagQgate.Substring(2, 6).Trim();
+                    phase = (tagQgate.Substring(2, 2).Trim() == "K1") ? "10" : "8";
+                    lotNo = tagQgate.Substring(58, 4).Trim();
+                    partNo = tagQgate.Substring(19, 25);
+                    boxNo = tagQgate.Substring(100, 3).Trim();
+                    qty = tagQgate.Substring(52, 6).Trim();
+
+                    //Console.WriteLine("tagQgate" + tagQgate);
+
+                    var data = new
+                    {
+                        partNo = tagQgate.Substring(19, 25).Trim(),
+                        line_cd = tagQgate.Substring(2, 6).Trim()
+                    };
+                    var dataJson = JsonConvert.SerializeObject(data);
+                    dynamic responseData = await api.CurPostRequestAsync("Operation/get_model_partNo/", dataJson);
+
+                    if (responseData.Status == 1)
+                    {
+                        partNoName = responseData.PartName;
+                        model = responseData.MODEL;
+                    }
+
+                    string parameter = $"?partNumber={tagQgate.Substring(19, 25).Trim()}";
+                    dynamic resultLOCATION = await api.CurGetRequestAsync("http://192.168.161.77/apiSystem/exp/getItemMaster", parameter);
+
+                    foreach (var itemLOCATION in resultLOCATION)
+                    {
+                        location = itemLOCATION.LOCATION;
+                    }
+
+                    var datatag = new
+                    {
+                        TagQgate = tagQgate
+                    };
+
+                    var datadatatagjson = JsonConvert.SerializeObject(datatag);
+                    dynamic represponsedatadatatag = await api.CurPostRequestAsync("ReprintQgate/get_DataScanReprint/", datadatatagjson);
+
+                    Console.WriteLine("represponsedatadatatag" + represponsedatadatatag);
+
+                    if (represponsedatadatatag.Status == 1)
+                    {
+                        shift = represponsedatadatatag.shift;
+                        checkDate = represponsedatadatatag.checkDate;
+                    }
+
+                    PrintTag printTag = new PrintTag();
+                    printTag.printTagQgate(" ", partNo, partNoName, model, " ", boxNo, DateTime.Parse(checkDate), tagQgate, qrProduct, location, qty, lotNo, shift, line, phase);
+                    
                 }
                 else
                 {
@@ -273,11 +344,6 @@ namespace QGate_system
             }
 
         }
-
-
-
-
-
 
     }
 }

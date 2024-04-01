@@ -21,6 +21,7 @@ namespace QGate_system
 
         qgateOperationManual qgateOPManual = qgateOperationManual.instance;
         qgateOperation qgateOPDMC = qgateOperation.instance;
+        qgateScanTag scanTag = new qgateScanTag();
 
         public qgateDefectNg()
         {
@@ -36,7 +37,7 @@ namespace QGate_system
 
         public async void qgateDefectNg_Load(object sender, EventArgs e)
         {
-            if (operationData != null)
+            /*if (operationData != null)
             {
                 if (!string.IsNullOrEmpty(operationData.countDefectNGId))
                 {
@@ -50,7 +51,7 @@ namespace QGate_system
             else
             {
                 MessageBox.Show("operationData is null.");
-            }
+            }*/
             lbZone.Text = LocationData.Zone;
             lbStation.Text = LocationData.Station;
             lbNamedefect.Text = Namedefect;
@@ -318,7 +319,6 @@ namespace QGate_system
             }
         }
 
-
         private async Task DMC(string DefectCode)
         {
             DateTime dateTime = DateTime.Now;
@@ -342,7 +342,7 @@ namespace QGate_system
                     Datetomor = previousDay.ToString("yyyy-MM-dd");
                 }
 
-                MessageBox.Show("CountID" + operationData.countDMCDefectNGId);
+                //MessageBox.Show("CountID" + operationData.countDMCDefectNGId);
                 if (!string.IsNullOrEmpty(operationData.countDMCDefectNGId)) //operationData.countDefectNGId != null || operationData.countDefectNGId != ""
                 {
 
@@ -422,6 +422,70 @@ namespace QGate_system
                 }
                 else
                 {
+                    var dataGetLogchkboxDefect = new
+                    {
+                        lotno_curr = scanTag.genLot(DateTime.Now),
+                        partNo = operationData.partnotagfa,
+                        typedefect = 1
+                    };
+
+                    //Console.WriteLine(dataGetLogchkboxDefect);
+
+                    var dataGetLogchkboxDefectJson = JsonConvert.SerializeObject(dataGetLogchkboxDefect);
+                    dynamic responsedataGetLogchkboxDefect = await api.CurPostRequestAsync("Operation/get_boxDefect/", dataGetLogchkboxDefectJson);
+                    //Console.WriteLine("responsedataGetLogchkboxDefect" + responsedataGetLogchkboxDefect);
+
+                    string box;
+                    string boxNoString;
+                    if (responsedataGetLogchkboxDefect.Status == 1)
+                    {
+                        boxNoString = responsedataGetLogchkboxDefect.lcbnd_box_no.ToString();
+                        box = (int.Parse(boxNoString) + 1 > 9) ? "0" + (int.Parse(boxNoString) + 1).ToString() : "00" + (int.Parse(boxNoString) + 1).ToString();
+                        var dataInsLogchkboxDefect = new
+                        {
+                            lotNo = scanTag.genLot(DateTime.Now),
+                            partNo = operationData.partnotagfa,
+                            boxDefect = box,
+                            typeDefect = 1,
+                            login_user = Session.Userlogin
+                        };
+                        //Console.WriteLine(dataGetLogchkboxDefect);
+
+
+                        var dataInsLogchkboxDefectJson = JsonConvert.SerializeObject(dataInsLogchkboxDefect);
+                        dynamic responseInsLogchkboxDefectJson = await api.CurPostRequestAsync("OperationIns/insert_log_chk_BoxNo_Defect/", dataInsLogchkboxDefectJson);
+                        //Console.WriteLine("responseInsLogchkboxDefectJson" + responseInsLogchkboxDefectJson);
+                        if (responseInsLogchkboxDefectJson.Status != 1)
+                        {
+                            MessageBox.Show("Error system!!! : insert log chk box defect");
+                        }
+
+
+                    }
+                    else
+                    {
+                        box = "001";
+                        var dataInsLogchkboxDefect = new
+                        {
+                            lotNo = scanTag.genLot(DateTime.Now),
+                            partNo = operationData.partnotagfa,
+                            boxDefect = box,
+                            typeDefect = 1,
+                            login_user = Session.Userlogin
+                        };
+
+                        var dataInsLogchkboxDefectJson = JsonConvert.SerializeObject(dataInsLogchkboxDefect);
+                        dynamic responseInsLogchkboxDefectJson = await api.CurPostRequestAsync("OperationIns/insert_log_chk_BoxNo_Defect/", dataInsLogchkboxDefectJson);
+                        //Console.WriteLine("responseInsLogchkboxDefectJson" + responseInsLogchkboxDefectJson);
+                        if (responseInsLogchkboxDefectJson.Status != 1)
+                        {
+                            MessageBox.Show("Error system!!! : insert log chk box defect");
+                        }
+                    }
+
+                    ////////////
+
+
                     var dataInsCountOP = new
                     {
                         StationId = LocationData.IdStation,
@@ -447,16 +511,12 @@ namespace QGate_system
                             DefectCode = DefectCode,
                             OperationId = operationId,
                             CountId = operationData.countDMCDefectNGId,
-                            TypeDefect = 0,
+                            TypeDefect = 1,
                             login_user = Session.Userlogin
                         };
 
                         var dataInsCountDetailJson = JsonConvert.SerializeObject(dataInsCountDetail);
                         dynamic responseCountDetail = await api.CurPostRequestAsync("OperationIns/insert_Defect_count_detail", dataInsCountDetailJson);
-
-                        //Console.WriteLine(responseCountDetail);
-
-                        //Console.WriteLine("Response Insert detail :" + responseCountDetail.ToString());
 
                         if (responseCountDetail.Status == 1)
                         {
@@ -470,6 +530,7 @@ namespace QGate_system
 
                             qgateOPDMC.setTextCountProduct.Text = CountProduct.ToString();
                             qgateOPDMC.setTextCountNg.Text = CountDefect.ToString();
+                            qgateOPDMC.setTextlbBoxNoNg.Text = box;
                             qgateOPDMC.setTextCountNgSerial.Text = tbPartNo.Text;
 
                             qgateOPDMC.Counter = CountProduct;

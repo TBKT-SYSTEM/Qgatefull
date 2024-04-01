@@ -55,7 +55,6 @@ namespace QGate_system
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lbNc = new System.Windows.Forms.Label();
             this.lbNg = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbFinish)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBackToScan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbEnd)).BeginInit();
@@ -65,9 +64,10 @@ namespace QGate_system
             // 
             this.lbZone.BackColor = System.Drawing.Color.Transparent;
             this.lbZone.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.lbZone.Location = new System.Drawing.Point(460, 47);
+            this.lbZone.Location = new System.Drawing.Point(613, 58);
+            this.lbZone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbZone.Name = "lbZone";
-            this.lbZone.Size = new System.Drawing.Size(100, 23);
+            this.lbZone.Size = new System.Drawing.Size(133, 28);
             this.lbZone.TabIndex = 0;
             this.lbZone.Text = "XX";
             // 
@@ -75,9 +75,10 @@ namespace QGate_system
             // 
             this.lbStation.BackColor = System.Drawing.Color.Transparent;
             this.lbStation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.lbStation.Location = new System.Drawing.Point(735, 47);
+            this.lbStation.Location = new System.Drawing.Point(980, 58);
+            this.lbStation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbStation.Name = "lbStation";
-            this.lbStation.Size = new System.Drawing.Size(51, 23);
+            this.lbStation.Size = new System.Drawing.Size(68, 28);
             this.lbStation.TabIndex = 1;
             this.lbStation.Text = "XX";
             // 
@@ -86,9 +87,10 @@ namespace QGate_system
             this.lbPartNoName.BackColor = System.Drawing.Color.Transparent;
             this.lbPartNoName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.lbPartNoName.ForeColor = System.Drawing.Color.White;
-            this.lbPartNoName.Location = new System.Drawing.Point(127, 186);
+            this.lbPartNoName.Location = new System.Drawing.Point(169, 229);
+            this.lbPartNoName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbPartNoName.Name = "lbPartNoName";
-            this.lbPartNoName.Size = new System.Drawing.Size(201, 21);
+            this.lbPartNoName.Size = new System.Drawing.Size(268, 26);
             this.lbPartNoName.TabIndex = 3;
             this.lbPartNoName.Text = "-";
             this.lbPartNoName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -98,9 +100,10 @@ namespace QGate_system
             this.lbPartNo.BackColor = System.Drawing.Color.Transparent;
             this.lbPartNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPartNo.ForeColor = System.Drawing.Color.White;
-            this.lbPartNo.Location = new System.Drawing.Point(100, 145);
+            this.lbPartNo.Location = new System.Drawing.Point(133, 178);
+            this.lbPartNo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbPartNo.Name = "lbPartNo";
-            this.lbPartNo.Size = new System.Drawing.Size(201, 21);
+            this.lbPartNo.Size = new System.Drawing.Size(268, 26);
             this.lbPartNo.TabIndex = 4;
             this.lbPartNo.Text = "-";
             this.lbPartNo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -110,9 +113,10 @@ namespace QGate_system
             this.lbProductDate.BackColor = System.Drawing.Color.Transparent;
             this.lbProductDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.lbProductDate.ForeColor = System.Drawing.Color.White;
-            this.lbProductDate.Location = new System.Drawing.Point(147, 221);
+            this.lbProductDate.Location = new System.Drawing.Point(196, 272);
+            this.lbProductDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbProductDate.Name = "lbProductDate";
-            this.lbProductDate.Size = new System.Drawing.Size(156, 21);
+            this.lbProductDate.Size = new System.Drawing.Size(208, 26);
             this.lbProductDate.TabIndex = 13;
             this.lbProductDate.Text = "-";
             this.lbProductDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -122,9 +126,10 @@ namespace QGate_system
             this.lbModel.BackColor = System.Drawing.Color.Transparent;
             this.lbModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.lbModel.ForeColor = System.Drawing.Color.White;
-            this.lbModel.Location = new System.Drawing.Point(90, 257);
+            this.lbModel.Location = new System.Drawing.Point(120, 316);
+            this.lbModel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbModel.Name = "lbModel";
-            this.lbModel.Size = new System.Drawing.Size(156, 21);
+            this.lbModel.Size = new System.Drawing.Size(208, 26);
             this.lbModel.TabIndex = 14;
             this.lbModel.Text = "-";
             this.lbModel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -134,9 +139,10 @@ namespace QGate_system
             this.lbLotNo.BackColor = System.Drawing.Color.Transparent;
             this.lbLotNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.lbLotNo.ForeColor = System.Drawing.Color.White;
-            this.lbLotNo.Location = new System.Drawing.Point(95, 295);
+            this.lbLotNo.Location = new System.Drawing.Point(127, 363);
+            this.lbLotNo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbLotNo.Name = "lbLotNo";
-            this.lbLotNo.Size = new System.Drawing.Size(156, 21);
+            this.lbLotNo.Size = new System.Drawing.Size(208, 26);
             this.lbLotNo.TabIndex = 15;
             this.lbLotNo.Text = "-";
             this.lbLotNo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -146,9 +152,10 @@ namespace QGate_system
             this.lbSnp.BackColor = System.Drawing.Color.Transparent;
             this.lbSnp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.lbSnp.ForeColor = System.Drawing.Color.White;
-            this.lbSnp.Location = new System.Drawing.Point(75, 332);
+            this.lbSnp.Location = new System.Drawing.Point(100, 409);
+            this.lbSnp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbSnp.Name = "lbSnp";
-            this.lbSnp.Size = new System.Drawing.Size(156, 21);
+            this.lbSnp.Size = new System.Drawing.Size(208, 26);
             this.lbSnp.TabIndex = 16;
             this.lbSnp.Text = "-";
             this.lbSnp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -158,9 +165,10 @@ namespace QGate_system
             this.lbBoxNo.BackColor = System.Drawing.Color.Transparent;
             this.lbBoxNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.lbBoxNo.ForeColor = System.Drawing.Color.White;
-            this.lbBoxNo.Location = new System.Drawing.Point(98, 432);
+            this.lbBoxNo.Location = new System.Drawing.Point(131, 532);
+            this.lbBoxNo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbBoxNo.Name = "lbBoxNo";
-            this.lbBoxNo.Size = new System.Drawing.Size(156, 21);
+            this.lbBoxNo.Size = new System.Drawing.Size(208, 26);
             this.lbBoxNo.TabIndex = 17;
             this.lbBoxNo.Text = "-";
             this.lbBoxNo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -170,9 +178,10 @@ namespace QGate_system
             this.lbQrSerialNum.BackColor = System.Drawing.Color.Transparent;
             this.lbQrSerialNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.lbQrSerialNum.ForeColor = System.Drawing.Color.White;
-            this.lbQrSerialNum.Location = new System.Drawing.Point(499, 364);
+            this.lbQrSerialNum.Location = new System.Drawing.Point(665, 448);
+            this.lbQrSerialNum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbQrSerialNum.Name = "lbQrSerialNum";
-            this.lbQrSerialNum.Size = new System.Drawing.Size(219, 21);
+            this.lbQrSerialNum.Size = new System.Drawing.Size(292, 26);
             this.lbQrSerialNum.TabIndex = 20;
             this.lbQrSerialNum.Text = "-";
             this.lbQrSerialNum.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -181,9 +190,10 @@ namespace QGate_system
             // 
             this.tbQrSerial.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbQrSerial.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.tbQrSerial.Location = new System.Drawing.Point(350, 438);
+            this.tbQrSerial.Location = new System.Drawing.Point(467, 539);
+            this.tbQrSerial.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbQrSerial.Name = "tbQrSerial";
-            this.tbQrSerial.Size = new System.Drawing.Size(422, 31);
+            this.tbQrSerial.Size = new System.Drawing.Size(563, 39);
             this.tbQrSerial.TabIndex = 21;
             this.tbQrSerial.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ScanQrSerial_KeyDown);
             // 
@@ -191,10 +201,11 @@ namespace QGate_system
             // 
             this.tbCounterNg.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbCounterNg.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbCounterNg.Location = new System.Drawing.Point(672, 123);
+            this.tbCounterNg.Location = new System.Drawing.Point(896, 151);
+            this.tbCounterNg.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbCounterNg.Name = "tbCounterNg";
             this.tbCounterNg.ReadOnly = true;
-            this.tbCounterNg.Size = new System.Drawing.Size(83, 31);
+            this.tbCounterNg.Size = new System.Drawing.Size(111, 39);
             this.tbCounterNg.TabIndex = 22;
             this.tbCounterNg.Text = "0";
             this.tbCounterNg.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -203,10 +214,11 @@ namespace QGate_system
             // 
             this.tbCounterNc.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbCounterNc.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbCounterNc.Location = new System.Drawing.Point(671, 254);
+            this.tbCounterNc.Location = new System.Drawing.Point(895, 313);
+            this.tbCounterNc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbCounterNc.Name = "tbCounterNc";
             this.tbCounterNc.ReadOnly = true;
-            this.tbCounterNc.Size = new System.Drawing.Size(83, 31);
+            this.tbCounterNc.Size = new System.Drawing.Size(111, 39);
             this.tbCounterNc.TabIndex = 23;
             this.tbCounterNc.Text = "0";
             this.tbCounterNc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -215,10 +227,11 @@ namespace QGate_system
             // 
             this.tbCounter.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbCounter.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbCounter.Location = new System.Drawing.Point(132, 379);
+            this.tbCounter.Location = new System.Drawing.Point(176, 466);
+            this.tbCounter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbCounter.Name = "tbCounter";
             this.tbCounter.ReadOnly = true;
-            this.tbCounter.Size = new System.Drawing.Size(83, 31);
+            this.tbCounter.Size = new System.Drawing.Size(111, 39);
             this.tbCounter.TabIndex = 24;
             this.tbCounter.Text = "0";
             this.tbCounter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -229,9 +242,10 @@ namespace QGate_system
             this.lbBoxNoNc.BackColor = System.Drawing.Color.Transparent;
             this.lbBoxNoNc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.lbBoxNoNc.ForeColor = System.Drawing.Color.Black;
-            this.lbBoxNoNc.Location = new System.Drawing.Point(599, 295);
+            this.lbBoxNoNc.Location = new System.Drawing.Point(799, 363);
+            this.lbBoxNoNc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbBoxNoNc.Name = "lbBoxNoNc";
-            this.lbBoxNoNc.Size = new System.Drawing.Size(156, 21);
+            this.lbBoxNoNc.Size = new System.Drawing.Size(208, 26);
             this.lbBoxNoNc.TabIndex = 25;
             this.lbBoxNoNc.Text = "-";
             this.lbBoxNoNc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -241,9 +255,10 @@ namespace QGate_system
             this.lbBoxNoNg.BackColor = System.Drawing.Color.Transparent;
             this.lbBoxNoNg.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.lbBoxNoNg.ForeColor = System.Drawing.Color.Black;
-            this.lbBoxNoNg.Location = new System.Drawing.Point(599, 166);
+            this.lbBoxNoNg.Location = new System.Drawing.Point(799, 204);
+            this.lbBoxNoNg.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbBoxNoNg.Name = "lbBoxNoNg";
-            this.lbBoxNoNg.Size = new System.Drawing.Size(156, 21);
+            this.lbBoxNoNg.Size = new System.Drawing.Size(208, 26);
             this.lbBoxNoNg.TabIndex = 26;
             this.lbBoxNoNg.Text = "-";
             this.lbBoxNoNg.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -253,9 +268,10 @@ namespace QGate_system
             this.pbFinish.BackColor = System.Drawing.Color.Transparent;
             this.pbFinish.BackgroundImage = global::QGate_system.Properties.Resources.Finish;
             this.pbFinish.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pbFinish.Location = new System.Drawing.Point(442, 512);
+            this.pbFinish.Location = new System.Drawing.Point(589, 630);
+            this.pbFinish.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbFinish.Name = "pbFinish";
-            this.pbFinish.Size = new System.Drawing.Size(160, 76);
+            this.pbFinish.Size = new System.Drawing.Size(213, 94);
             this.pbFinish.TabIndex = 27;
             this.pbFinish.TabStop = false;
             this.pbFinish.Click += new System.EventHandler(this.pbFinish_Click);
@@ -265,9 +281,10 @@ namespace QGate_system
             this.lbSerialNoNg.BackColor = System.Drawing.Color.Transparent;
             this.lbSerialNoNg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbSerialNoNg.ForeColor = System.Drawing.Color.Black;
-            this.lbSerialNoNg.Location = new System.Drawing.Point(514, 200);
+            this.lbSerialNoNg.Location = new System.Drawing.Point(685, 246);
+            this.lbSerialNoNg.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbSerialNoNg.Name = "lbSerialNoNg";
-            this.lbSerialNoNg.Size = new System.Drawing.Size(258, 21);
+            this.lbSerialNoNg.Size = new System.Drawing.Size(344, 26);
             this.lbSerialNoNg.TabIndex = 28;
             this.lbSerialNoNg.Text = "-";
             this.lbSerialNoNg.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -277,9 +294,10 @@ namespace QGate_system
             this.lbSerialNoNc.BackColor = System.Drawing.Color.Transparent;
             this.lbSerialNoNc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbSerialNoNc.ForeColor = System.Drawing.Color.Black;
-            this.lbSerialNoNc.Location = new System.Drawing.Point(514, 330);
+            this.lbSerialNoNc.Location = new System.Drawing.Point(685, 406);
+            this.lbSerialNoNc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbSerialNoNc.Name = "lbSerialNoNc";
-            this.lbSerialNoNc.Size = new System.Drawing.Size(258, 21);
+            this.lbSerialNoNc.Size = new System.Drawing.Size(344, 26);
             this.lbSerialNoNc.TabIndex = 29;
             this.lbSerialNoNc.Text = "-";
             this.lbSerialNoNc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -287,9 +305,10 @@ namespace QGate_system
             // pbBackToScan
             // 
             this.pbBackToScan.BackColor = System.Drawing.Color.Transparent;
-            this.pbBackToScan.Location = new System.Drawing.Point(26, 508);
+            this.pbBackToScan.Location = new System.Drawing.Point(35, 625);
+            this.pbBackToScan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbBackToScan.Name = "pbBackToScan";
-            this.pbBackToScan.Size = new System.Drawing.Size(156, 79);
+            this.pbBackToScan.Size = new System.Drawing.Size(208, 97);
             this.pbBackToScan.TabIndex = 30;
             this.pbBackToScan.TabStop = false;
             this.pbBackToScan.Click += new System.EventHandler(this.pbBackToScan_Click);
@@ -298,9 +317,10 @@ namespace QGate_system
             // 
             this.pbEnd.BackColor = System.Drawing.Color.Transparent;
             this.pbEnd.BackgroundImage = global::QGate_system.Properties.Resources.End;
-            this.pbEnd.Location = new System.Drawing.Point(625, 512);
+            this.pbEnd.Location = new System.Drawing.Point(833, 630);
+            this.pbEnd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbEnd.Name = "pbEnd";
-            this.pbEnd.Size = new System.Drawing.Size(160, 76);
+            this.pbEnd.Size = new System.Drawing.Size(213, 94);
             this.pbEnd.TabIndex = 31;
             this.pbEnd.TabStop = false;
             this.pbEnd.Click += new System.EventHandler(this.pbEnd_Click);
@@ -310,9 +330,10 @@ namespace QGate_system
             this.lbCodeRank.BackColor = System.Drawing.Color.Transparent;
             this.lbCodeRank.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.lbCodeRank.ForeColor = System.Drawing.Color.White;
-            this.lbCodeRank.Location = new System.Drawing.Point(465, 399);
+            this.lbCodeRank.Location = new System.Drawing.Point(620, 491);
+            this.lbCodeRank.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbCodeRank.Name = "lbCodeRank";
-            this.lbCodeRank.Size = new System.Drawing.Size(219, 21);
+            this.lbCodeRank.Size = new System.Drawing.Size(292, 26);
             this.lbCodeRank.TabIndex = 32;
             this.lbCodeRank.Text = "-";
             this.lbCodeRank.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -324,39 +345,30 @@ namespace QGate_system
             // lbNc
             // 
             this.lbNc.BackColor = System.Drawing.Color.Transparent;
-            this.lbNc.Location = new System.Drawing.Point(354, 244);
+            this.lbNc.Location = new System.Drawing.Point(472, 300);
+            this.lbNc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbNc.Name = "lbNc";
-            this.lbNc.Size = new System.Drawing.Size(159, 82);
+            this.lbNc.Size = new System.Drawing.Size(212, 101);
             this.lbNc.TabIndex = 37;
             this.lbNc.Click += new System.EventHandler(this.lbNc_Click);
             // 
             // lbNg
             // 
             this.lbNg.BackColor = System.Drawing.Color.Transparent;
-            this.lbNg.Location = new System.Drawing.Point(354, 115);
+            this.lbNg.Location = new System.Drawing.Point(472, 142);
+            this.lbNg.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbNg.Name = "lbNg";
-            this.lbNg.Size = new System.Drawing.Size(159, 82);
+            this.lbNg.Size = new System.Drawing.Size(212, 101);
             this.lbNg.TabIndex = 38;
             this.lbNg.Click += new System.EventHandler(this.lbNg_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(48, 77);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 39;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // qgateOperation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::QGate_system.Properties.Resources.OperationDMC11;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(800, 600);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1067, 738);
             this.Controls.Add(this.lbNg);
             this.Controls.Add(this.lbNc);
             this.Controls.Add(this.lbCodeRank);
@@ -382,7 +394,7 @@ namespace QGate_system
             this.Controls.Add(this.lbStation);
             this.Controls.Add(this.lbZone);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "qgateOperation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.qgateOperation_Load);
@@ -421,6 +433,5 @@ namespace QGate_system
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lbNc;
         private System.Windows.Forms.Label lbNg;
-        private System.Windows.Forms.Button button1;
     }
 }

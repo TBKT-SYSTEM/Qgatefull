@@ -31,9 +31,9 @@ namespace QGate_system
             return (int)(millimeters * inchesPerMillimeter * 100);
         }
 
-        public void printTagDefect(string tagqgateDefect, string tagDefectDetil, string typeDefect,string boxNo,string location,string QTY, string partnotagfa, string partNoName, string model, string partline, string partworkshift)
+        public void printTagDefect(string tagqgateDefect, string tagDefectDetil, string typeDefect,string boxNo,string location,string QTY, string partnotagfa, string partNoName, string model, string partline, string partworkshift ,DateTime date, string Phase)
         {
-            MessageBox.Show("type Defect : " + typeDefect);
+            //MessageBox.Show("type Defect : " + typeDefect);
 
             QRCodeGenerator generator = new QRCodeGenerator();
             qgateScanTag qgateScanTag = new qgateScanTag();
@@ -110,15 +110,15 @@ namespace QGate_system
                 e.Graphics.DrawString("LINE:", title.Font, Brushes.Black, 430, 105);
                 e.Graphics.DrawString(partline, values.Font, Brushes.Black, 460, 122);
                 e.Graphics.DrawString("LOT NO:", title.Font, Brushes.Black, 570, 105);
-                e.Graphics.DrawString(qgateScanTag.genLot(DateTime.Now), values.Font, Brushes.Black, 610, 122);
+                e.Graphics.DrawString(qgateScanTag.genLot(date), values.Font, Brushes.Black, 610, 122);
                 e.Graphics.DrawString("ACTUAL DATE : ", title.Font, Brushes.Black, 130, 150);
-                e.Graphics.DrawString(DateTime.Now.ToString("dd/MM/yyyy"), values.Font, Brushes.Black, 150, 167);
+                e.Graphics.DrawString(date.ToString("dd/MM/yyyy"), values.Font, Brushes.Black, 150, 167);
                 e.Graphics.DrawString("LOCATION :", title.Font, Brushes.Black, 430, 150);
                 e.Graphics.DrawString(location, values.Font, Brushes.Black, 445, 167);
                 e.Graphics.DrawString("SHIFT : ", title.Font, Brushes.Black, 130, 197);
                 e.Graphics.DrawString(partworkshift, values.Font, Brushes.Black, 191, 210);
                 e.Graphics.DrawString("PHASE :", title.Font, Brushes.Black, 325, 197);
-                e.Graphics.DrawString("10", values.Font, Brushes.Black, 390, 210);
+                e.Graphics.DrawString(Phase, values.Font, Brushes.Black, 390, 210);
                 e.Graphics.DrawString("BOX NO :", title.Font, Brushes.Black, 470, 197);
                 e.Graphics.DrawString(boxNo, values.Font, Brushes.Black, 510, 210);
                 e.Graphics.DrawString("DEFECT CODE :", detail_code.Font, Brushes.Black, 15, 236);
@@ -138,10 +138,7 @@ namespace QGate_system
             printPreviewDialog1.Document = printDoc;
             printPreviewDialog1.ShowDialog();
 
-            //printPreviewDialog1.Document = printDoc;
-            //printPreviewDialog1.ShowDialog();
-
-            //printDocument1.Print();
+            printDocument1.Print();
 
         }
 

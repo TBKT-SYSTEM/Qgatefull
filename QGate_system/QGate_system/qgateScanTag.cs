@@ -21,7 +21,6 @@ namespace QGate_system
         LocationData LocationData = LocationData.Instance;
         operationData operationData = operationData.Instance;
 
-
         public string macAddress;
         string codemaster;
 
@@ -48,6 +47,12 @@ namespace QGate_system
 
         private async void qgateScanTag_Load(object sender, EventArgs e)
         {
+            /*var dataaa = new
+            {
+                StationID = LocationData.IdStation
+            };
+            Console.WriteLine(dataaa);*/
+
             try
             {
                 lbZone.Text = LocationData.Zone;
@@ -62,13 +67,27 @@ namespace QGate_system
 
                 var jsonData = JsonConvert.SerializeObject(data);
                 dynamic dataPartNO = await api.CurPostRequestAsync("Operation/get_part/", jsonData);
+                Console.WriteLine("dataPartNO " + dataPartNO);
 
                 if (dataPartNO["status"] == 1)
                 {
-                    LocationData.TypeStation = dataPartNO.type;
-                    LocationData.PartNo = dataPartNO.partNo;
-                    LocationData.PartNoID = dataPartNO.partNoID;
+                    //LocationData.TypeStation = dataPartNO.type;
+                    LocationData.PartNo = (dataPartNO.partNo == null || dataPartNO.partNo == "") ? null : dataPartNO.partNo;
+                    LocationData.PartNoID = (dataPartNO.partNoID == null) ? 0 : dataPartNO.partNoID;
                     LocationData.selectPartNo = dataPartNO.selectPartNo;
+                    LocationData.TypeStation = dataPartNO.type;
+
+                    //operationData.typeStation = dataPartNO.type;
+
+                    if (dataPartNO.partNoID == null)
+                    {
+                        Console.WriteLine("dataPartNO.partNoID1 " + dataPartNO.partNoID);
+                    }
+                    else
+                    {
+                        Console.WriteLine("dataPartNO.partNoID2 " + dataPartNO.partNoID);
+                    }
+                    
                 }
                 else if (dataPartNO["status"] == 0)
                 {
@@ -90,12 +109,18 @@ namespace QGate_system
             {
                 Console.WriteLine(ex.Message);
                 MessageBox.Show(ex.Message);
-            }
+            }/**/
 
         }
 
         private void tbScanTag_KeyDown(object sender, KeyEventArgs e)
         {
+            DateTime currentDateTime = DateTime.Now;
+            string date = genLot(currentDateTime);
+
+            //Console.WriteLine("Lot" + date);
+
+
             if (e.KeyCode == Keys.Enter)
             {
                 string tag = tbScanTag.Text;
@@ -182,27 +207,55 @@ namespace QGate_system
                     if (data_result_Insert.Status == 1)
                     {
                         operationData.tagfaid = data_result_Insert.tagfaid;
-                        //MessageBox.Show("ok insert " + LocationData.TypeStation);
                         qgateOperation formOperation = new qgateOperation();
                         qgateOperationManual formOperationNondmc = new qgateOperationManual();
-                        if (operationData.typeStation == "DMC")
+                        //Console.WriteLine("operationData.typeStation : " + operationData.typeStation);
+                        //Console.WriteLine("LocationData.TypeStatio : " + LocationData.TypeStation);
+
+                        if (LocationData.TypeStation == "Both") 
                         {
-                            formOperation.Show();
-                            this.Hide();
-                        }
-                        else if (operationData.typeStation == "Manual")
-                        {
-                            formOperationNondmc.Show();
-                            this.Hide();
-                        }
-                        else if (operationData.typeStation == "Both")
-                        {
-                            MessageBox.Show("Station type Both");
+                            if (operationData.typeStation == "DMC")
+                            {
+                                formOperation.Show();
+                                this.Hide();
+                            }
+                            else if (operationData.typeStation == "Manual")
+                            {
+                                formOperationNondmc.Show();
+                                this.Hide();
+                            }
+                            else if (operationData.typeStation == "Both")
+                            {
+                                MessageBox.Show("Station type Both");
+                            }
+                            else
+                            {
+                                MessageBox.Show("No type station");
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("No type station");
+                            if (LocationData.TypeStation == "DMC")
+                            {
+                                formOperation.Show();
+                                this.Hide();
+                            }
+                            else if (LocationData.TypeStation == "Manual")
+                            {
+                                formOperationNondmc.Show();
+                                this.Hide();
+                            }
+                            else if (LocationData.TypeStation == "Both")
+                            {
+                                MessageBox.Show("Station type Both");
+                            }
+                            else
+                            {
+                                MessageBox.Show("No type station");
+                            }
                         }
+
+                        
                     }
                     else
                     {
@@ -227,13 +280,12 @@ namespace QGate_system
 
         private void nextForm_TypeStation()
         {
-            if (operationData.typeStation == null)
+            /*if (operationData.typeStation == null)
             {
                 operationData.typeStation = LocationData.TypeStation;
                 //MessageBox.Show(operationData.typeStation);
-            }
+            }*/
         }
-
 
         private async Task<string> get_Code_master()
         {
@@ -248,26 +300,28 @@ namespace QGate_system
             return dataMenubypermis.mfcm_id.ToString();
         }
 
-
         public async Task getboxandlot()
         {
-
             DateTime currentDateTime = DateTime.Now;
 
             var BoxNoAndLot1 = new
             {
-                date = genLot(currentDateTime),
+                lotno_curr = genLot(currentDateTime), 
                 partno = operationData.partnotagfa
             }; 
 
             var BoxNoAndLotJson1 = JsonConvert.SerializeObject(BoxNoAndLot1);
-            dynamic dataBoxNoAndLot1 = await api.CurPostRequestAsync("Operation/GET_BoxNoAndLot/", BoxNoAndLotJson1);
+            dynamic dataBoxNoAndLot1 = await api.CurPostRequestAsync("Operation/GET_BoxNoQgate/", BoxNoAndLotJson1);
             //Console.WriteLine(dataBoxNoAndLot1);
 
             if (dataBoxNoAndLot1.Status == 1)
             {
-                operationData.boxNo = dataBoxNoAndLot1.iotc_count_box;
-                operationData.lotcur = dataBoxNoAndLot1.ifts_lot_current;
+                operationData.boxNo = dataBoxNoAndLot1.lcbn_box_no;
+                operationData.lotcur = dataBoxNoAndLot1.lcbn_lot_no;
+            }
+            else if (dataBoxNoAndLot1.Status == 10)
+            {
+                MessageBox.Show("Error System!!! : get box (log chk box)");
             }
             else
             {
@@ -275,8 +329,25 @@ namespace QGate_system
                 operationData.lotcur = genLot(currentDateTime);
             }
             operationData.boxNo += 1;
-        }
 
+            var dataINSLogchkboxQgate = new
+            {
+                partNo = operationData.partnotagfa,
+                lotNo = genLot(DateTime.Now),
+                box = operationData.boxNo,
+                login_user = Session.Userlogin
+            };
+
+            var dataINSLogchkboxQgateJson = JsonConvert.SerializeObject(dataINSLogchkboxQgate);
+            dynamic responsedataINSLogchkboxQgate = await api.CurPostRequestAsync("OperationIns/insert_log_chk_BoxNo_Qgate/", dataINSLogchkboxQgateJson);
+            //Console.WriteLine(responsedataINSLogchkboxQgate);
+
+            if (responsedataINSLogchkboxQgate.Status == 0 || responsedataINSLogchkboxQgate.Status == 10)
+            {
+                MessageBox.Show("Error System!!! : isnert log chk box");
+            } 
+
+        }
 
         public string genLot(DateTime lotDate)
         {
@@ -315,7 +386,6 @@ namespace QGate_system
                 return $"{Lot}";
             }
 
-
         }
 
         private void pbSelectModel_Click(object sender, EventArgs e)
@@ -325,5 +395,6 @@ namespace QGate_system
 
             this.Hide();
         }
+
     }
 }

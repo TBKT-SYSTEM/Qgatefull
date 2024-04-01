@@ -131,8 +131,6 @@ namespace QGate_system
         }
 
 
-
-
     }
 
 

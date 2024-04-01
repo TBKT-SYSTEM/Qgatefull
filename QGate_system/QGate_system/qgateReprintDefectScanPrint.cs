@@ -164,7 +164,6 @@ namespace QGate_system
                     lbCheckDate.Text = reponesDatagetTagDefect.checkDate;
 
                     partNoName = responseDataGetModelAndpartNameJson.PartName;
-
                     
                 }
                 else
@@ -217,80 +216,93 @@ namespace QGate_system
         {
             try
             {
-                string partno, boxno, model, lotno, qty, shift;
-
-                partno = lbPartNo.Text;
-                boxno = lbBoxNo.Text;
-                model = lbModel.Text;
-                lotno = lbLotNo.Text;
-                qty = lbQty.Text;
-                shift = lbShift.Text;
-
-
-                string Phase = null;
-                // ใช้ K1 K2 ใน line เช็ค Phase
-                if (tagDefectGlobal.Substring(5, 2).Trim() == "K1")
+                var dataGetReprintDefect = new
                 {
-                    Phase = "Phase 10";
+                    IdTagDefect = tagDefectGlobal
+                };
+
+                var dataGetReprintDefectson = JsonConvert.SerializeObject(dataGetReprintDefect);
+                dynamic responsedataGetReprintDefect = await api.CurPostRequestAsync("ReprintDefect/get_DataReprintDefect/", dataGetReprintDefectson);
+
+                Console.WriteLine("responsedataGetReprintDefect : " + responsedataGetReprintDefect);
+
+                if (responsedataGetReprintDefect.Status == 1)
+                {
+                    MessageBox.Show("Getdata ok");
+
+                    string tagDefect = null;
+                    string qrDefectDetail = null;
+                    string typeDefect = null;
+                    string box = null;
+                    string location = null;
+                    string qty = null;
+                    string partNo = null;
+                    string partNoName = null;
+                    string model = null;
+                    string line = null;
+                    string workshift = null;
+                    string date = null;
+                    string Phase = (tagDefectGlobal.Substring(5, 2).Trim() == "K1") ? "Phase 10" : "Phase 8";
+
+                    foreach (var item in responsedataGetReprintDefect.data)
+                    {
+                        tagDefect = item.SubPartNoAndLotNo;
+                        qrDefectDetail = item.iptd_defect_qr;
+                        date = item.checkDate;
+                    }
+
+                    typeDefect = (tagDefect.Substring(2, 2).Trim() == "1") ? "NG" : "NC";
+                    box = tagDefect.Substring(35, 3).Trim();
+                    qty = tagDefect.Substring(38, 5).Trim();
+                    partNo = tagDefect.Substring(45).Trim();
+                    line = tagDefect.Substring(5, 6).Trim();
+
+
+                    string parameter = $"?partNumber={tagDefect.Substring(19, 25).Trim()}";
+                    dynamic resultLOCATION = await api.CurGetRequestAsync("http://192.168.161.77/apiSystem/exp/getItemMaster", parameter);
+
+                    if (resultLOCATION != null)
+                    {
+                        foreach (var itemLOCATION in resultLOCATION)
+                        {
+                            location = itemLOCATION.LOCATION;
+                        }
+
+                        var dataGetModelAndpartName = new
+                        {
+                            partNo = tagDefect.Substring(45).Trim(),
+                            line_cd = tagDefect.Substring(5, 6).Trim()
+                        };
+
+                        var dataGetModelAndpartNameJson = JsonConvert.SerializeObject(dataGetModelAndpartName);
+                        dynamic responseDataGetModelAndpartNameJson = await api.CurPostRequestAsync("Operation/get_model_partNo/", dataGetModelAndpartNameJson);
+
+                        if (responseDataGetModelAndpartNameJson.Status == 1)
+                        {
+                            partNoName = responseDataGetModelAndpartNameJson.PartName;
+                            workshift = responseDataGetModelAndpartNameJson.shift;
+                            model = responseDataGetModelAndpartNameJson.MODEL;
+
+
+                            PrintTagDefect TagDefect = new PrintTagDefect();
+                            TagDefect.printTagDefect(tagDefect, qrDefectDetail, typeDefect, box, location, qty, partNo, partNoName, model, line, workshift, DateTime.Parse(date),Phase);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error System!!! : Get model");
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error System!!! : Get location");
+                    }
+
                 }
                 else
                 {
-                    Phase = "Phase 8";
+                    MessageBox.Show("Error System : Getdata Reprint");
                 }
-
-                string parameter = $"?partNumber={operationData.partnotagfa}";
-                dynamic resultLOCATION = await api.CurGetRequestAsync("http://192.168.161.77/apiSystem/exp/getItemMaster", parameter);
-                string location = null;
-                foreach (var itemLOCATION in resultLOCATION)
-                {
-                    location = itemLOCATION.LOCATION;
-                }
-
-
-                /* 
-                 * chk type nc ng
-                 * string Typetag = null;
-                if (tagDefectGlobal.Substring(3, 1).Trim() == 1)
-                {
-                    Typetag = "NG";
-                }
-                eles
-                {
-                    Typetag = "NC";
-                }
-
-
-                qrDefectDetail ยังไม่ได้
-                 * 
-                 * var dataInsAndUpdTagQgate = new
-                 {
-                     IdtagDefect = tagDefectIdGlobal,
-                     login_user = Session.Userlogin
-                 };
-
-                 var dataInsAndUpdTagQgateJson = JsonConvert.SerializeObject(dataInsAndUpdTagQgate);
-                 dynamic responseDataInsTagQgateJson = await api.CurPostRequestAsync("ReprintUpdateDefect/update_CountPrintTagQgate/", dataInsAndUpdTagQgateJson);
-
-                 if (responseDataInsTagQgateJson.Status == 1)
-                 {
-                     dynamic responseDataUpdTagQgateJson = await api.CurPostRequestAsync("ReprintInsDefect/insert_Log_TagDefect/", dataInsAndUpdTagQgateJson);
-                     if (responseDataUpdTagQgateJson.Status == 1)
-                     {
-                         PrintTagDefect TagDefect = new PrintTagDefect();
-                         TagDefect.printTagDefect(tagDefectGlobal, qrDefectDetail, Typetag, boxno, location, QTY.ToString(),
-                                                 operationData.partnotagfa, operationData.partNoName, operationData.partline, operationData.partline, operationData.partworkshift);
-
-                         qrDefectDetail = "";
-
-
-
-                     }
-                     else
-                     {
-                         MessageBox.Show("Error System : Update count print Qgate");
-                     }
-                 }*/
-
 
             }
             catch (Exception ex)

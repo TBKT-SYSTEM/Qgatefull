@@ -42,11 +42,13 @@ namespace QGate_system
             cbPartNo.SelectedIndexChanged += cbPartNo_SelectedIndexChanged;
             cbLotNo.SelectedIndexChanged += cbLotNo_SelectedIndexChanged;
         }
+
         private async Task setComboBox()
         {
             qgateScanTag scanTag = new qgateScanTag();
             try
             {
+                // set combobox Date
                 cbDate.Items.Add("Choose Date");
                 cbDate.SelectedIndex = 0;
                 for (int i = 0; i < 3; i++)
@@ -57,6 +59,7 @@ namespace QGate_system
                 }
 
 
+                // set combobox Part No
                 var dataGetPartNo = new
                 {
                     macAddress = api.GetMacAddress()
@@ -74,12 +77,22 @@ namespace QGate_system
                 }
 
 
+                // set combobox Lotno
                 cbLotNo.Items.Add("Choose LotNo");
                 cbLotNo.SelectedIndex = 0;
                 for (int i = 0; i < 3; i++)
                 {
                     cbLotNo.Items.Add(scanTag.genLot(DateTime.Now.AddDays(-i)));
                 }
+
+
+                // set combobox Date
+                cbTypeDefect.Items.Add("Choose TypeDefect");
+                cbTypeDefect.SelectedIndex = 0;
+                cbTypeDefect.Items.Add("NC");
+                cbTypeDefect.Items.Add("NG");
+
+
             }
             catch (Exception ex)
             {
@@ -105,6 +118,12 @@ namespace QGate_system
             getDataTagDefect();
             //MessageBox.Show("ข้อความที่เลือก cbLotNo : " + cbLotNo.SelectedItem); 
         }
+
+        private void cbTypeDefect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            getDataTagDefect();
+        }
+
 
         private void pbScanPrint_Click(object sender, EventArgs e)
         {
@@ -178,6 +197,9 @@ namespace QGate_system
                 string selectedLotNo = cbLotNo.SelectedItem.ToString();
                 Console.WriteLine("ข้อความที่เลือก cbLotNo : " + selectedLotNo);
 
+                string selectedtypeDefect = cbLotNo.SelectedItem.ToString();
+                Console.WriteLine("ข้อความที่เลือก typeDefect : " + selectedtypeDefect);
+
 
                 if (selectedDate.Contains("Choose"))
                 {
@@ -191,12 +213,17 @@ namespace QGate_system
                 {
                     selectedLotNo = "null";
                 }
+                if (selectedtypeDefect.Contains("Choose"))
+                {
+                    selectedtypeDefect = "null";
+                }
 
                 var dataGetReprintDefect = new
                 {
                     Date = selectedDate,
                     PartNo = selectedPartNo,
-                    LotNo = selectedLotNo
+                    LotNo = selectedLotNo,
+                    TypeDefect = selectedtypeDefect
                 };
 
                 //Console.WriteLine(dataGetReprintDefect);
@@ -250,17 +277,80 @@ namespace QGate_system
                 if (responsedataGetReprintDefect.Status == 1)
                 {
                     MessageBox.Show("Getdata ok");
+
+                    string tagDefect = null;
+                    string qrDefectDetail = null;
+                    string typeDefect = null;
+                    string box = null;
+                    string location = null;
+                    string qty = null;
+                    string partNo = null;
+                    string partNoName = null;
+                    string model = null;
+                    string line = null;
+                    string workshift = null;
+                    string date = null;
+                    string Phase = null;
+
+
+                    foreach (var item in responsedataGetReprintDefect.data)
+                    {
+                        tagDefect = item.SubPartNoAndLotNo;
+                        qrDefectDetail = item.iptd_defect_qr;
+                        date = item.checkDate;
+                    }
+
+                    typeDefect = (tagDefect.Substring(2, 2).Trim() == "1") ? "NG" : "NC";
+                    box = tagDefect.Substring(35, 3).Trim();
+                    qty = tagDefect.Substring(38, 5).Trim();
+                    partNo = tagDefect.Substring(45).Trim();
+                    line = tagDefect.Substring(5, 6).Trim();
+                    Phase = (tagDefect.Substring(5, 2).Trim() == "K1") ? "Phase 10" : "Phase 8";
+
+
+                    string parameter = $"?partNumber={tagDefect.Substring(19, 25).Trim()}";
+                    dynamic resultLOCATION = await api.CurGetRequestAsync("http://192.168.161.77/apiSystem/exp/getItemMaster", parameter);
+
+                    if (resultLOCATION != null)
+                    {
+                        foreach (var itemLOCATION in resultLOCATION)
+                        {
+                            location = itemLOCATION.LOCATION;
+                        }
+
+                        var dataGetModelAndpartName = new
+                        {
+                            partNo = tagDefect.Substring(45).Trim(),
+                            line_cd = tagDefect.Substring(5, 6).Trim()
+                        };
+
+                        var dataGetModelAndpartNameJson = JsonConvert.SerializeObject(dataGetModelAndpartName);
+                        dynamic responseDataGetModelAndpartNameJson = await api.CurPostRequestAsync("Operation/get_model_partNo/", dataGetModelAndpartNameJson);
+
+                        if (responseDataGetModelAndpartNameJson.Status == 1)
+                        {
+                            partNoName = responseDataGetModelAndpartNameJson.PartName;
+                            workshift = responseDataGetModelAndpartNameJson.shift;
+                            model = responseDataGetModelAndpartNameJson.MODEL;
+
+
+                            PrintTagDefect TagDefect = new PrintTagDefect();
+                            TagDefect.printTagDefect(tagDefect, qrDefectDetail, typeDefect, box, location, qty, partNo, partNoName, model, line, workshift, DateTime.Parse(date),Phase);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error System!!! : Get model");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error System!!! : Get location");
+                    }
                 }
                 else
                 {
                     MessageBox.Show("Error System : Getdata Reprint");
                 }
-
-
-
-
-
-
 
 
             }
@@ -271,5 +361,7 @@ namespace QGate_system
             }
 
         }
+
+        
     }
 }

@@ -27,7 +27,7 @@ namespace QGate_system
             return (int)(millimeters * inchesPerMillimeter * 100);
         }
 
-        public void printTagQgate(string Sendto, string partno, string partNoName, string model, string custPartNo, string boxNo, string tagqgate, string id_product, string location, string QTY , string lotno, string workshift , string line ,string Phase)
+        public void printTagQgate(string Sendto, string partno, string partNoName, string model, string custPartNo, string boxNo, DateTime Date, string tagqgate, string id_product, string location, string QTY , string lotno, string workshift , string line ,string Phase)
         {
             //QRCodeGenerator generator = new QRCodeGenerator();
             PrintDocument printDoc = new PrintDocument();
@@ -91,9 +91,9 @@ namespace QGate_system
                 //}
 
                 e.Graphics.DrawString("BOX NO.", label13.Font, Brushes.Black, 275, 193);
-                e.Graphics.DrawString(int.Parse(boxNo).ToString() , label10.Font, Brushes.Black, 320, 209);
+                e.Graphics.DrawString(boxNo, label10.Font, Brushes.Black, 320, 209);
                 e.Graphics.DrawString("CHECK DATE | LOT NO.", title.Font, Brushes.Black, 415, 193);
-                e.Graphics.DrawString(DateTime.Now.ToString("dd/MM/yyyy") + " | " + qgateScanTag.genLot(DateTime.Now) , values.Font, Brushes.Black, 415, 213);
+                e.Graphics.DrawString(Date.ToString("dd/MM/yyyy") + " | " + qgateScanTag.genLot(Date) ,values.Font, Brushes.Black, 415, 213);
                 e.Graphics.DrawString("PROD. LOT NO.", label13.Font, Brushes.Black, 100, 245);
                 e.Graphics.DrawString(lotno, label10.Font, Brushes.Black, 140, 255);
                 e.Graphics.DrawString("SHIFT", label13.Font, Brushes.Black, 235, 245);
@@ -109,11 +109,8 @@ namespace QGate_system
             printPreviewDialog1.Document = printDoc;
             printPreviewDialog1.ShowDialog();
 
-            /*printDoc.Print();
+            printDoc.Print();
 
-            qgateScanTag scanTag = new qgateScanTag();
-            scanTag.Show();
-            this.Hide();*/
 
         }
 

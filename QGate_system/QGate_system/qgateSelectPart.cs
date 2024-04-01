@@ -24,52 +24,32 @@ namespace QGate_system
 
         private void qgateSelectPart_Load(object sender, EventArgs e)
         { 
-            string jsonData = LocationData.selectPartNo.ToString();
-            //Console.WriteLine(jsonData);
-            List <PartNOItem> data1 = JsonConvert.DeserializeObject<List<PartNOItem>>(jsonData);
-            foreach (PartNOItem item in data1)
+            try
             {
-                cbSelectPart.Items.Add(new PartNOItem(item.msp_id, item.msp_part_no));
-                //Console.WriteLine($"Part No ID : {item.msp_id} , Part No : {item.msp_part_no}");
-            }
-
-            lbZone.Text = LocationData.Zone;
-            lbStation.Text = LocationData.Station;
-
-
-            // selected partno
-            PartNOItem selectedItem = cbSelectPart.Items.Cast<PartNOItem>().FirstOrDefault(item => item.msp_id == LocationData.PartNoID);
-            if (selectedItem != null)
-            {
-                cbSelectPart.SelectedItem = selectedItem;
-            }
-
-
-
-            /*try
-            {
-                var data = new
+                string jsonData = LocationData.selectPartNo.ToString();
+                //Console.WriteLine(jsonData);
+                List<PartNOItem> data1 = JsonConvert.DeserializeObject<List<PartNOItem>>(jsonData);
+                foreach (PartNOItem item in data1)
                 {
-                    StationId = LocationData.IdStation,
-                };
-
-                var dataJson = JsonConvert.SerializeObject(data);
-                dynamic responseData = await api.CurPostRequestAsync("OperationUpdate/update_partNo_station/", dataJson);
-
-                if (responseData.Status == 1)
-                {
-                    cbSelectPart.SelectedItem = responseData;
+                    cbSelectPart.Items.Add(new PartNOItem(item.msp_id, item.msp_part_no));
+                    //Console.WriteLine($"Part No ID : {item.msp_id} , Part No : {item.msp_part_no}");
                 }
 
+                lbZone.Text = LocationData.Zone;
+                lbStation.Text = LocationData.Station;
 
-
+                // selected partno
+                PartNOItem selectedItem = cbSelectPart.Items.Cast<PartNOItem>().FirstOrDefault(item => item.msp_id == LocationData.PartNoID);
+                if (selectedItem != null)
+                {
+                    cbSelectPart.SelectedItem = selectedItem;
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 MessageBox.Show(ex.Message);
-            }*/
-
+            }
         }
 
         private void lb_CancelPart_Click(object sender, EventArgs e)
@@ -82,38 +62,42 @@ namespace QGate_system
 
         private async void lb_Confirm_Click(object sender, EventArgs e)
         {
-            PartNOItem select = (PartNOItem)cbSelectPart.SelectedItem;
-            Console.WriteLine("Part no :" + select.msp_id);
-            //this.Hide();
-
-            var data = new
+            try
             {
-                StationId = LocationData.IdStation,
-                NewPartNo = select.msp_part_no,
-                login_user = Session.Userlogin
+                PartNOItem select = (PartNOItem)cbSelectPart.SelectedItem;
+                Console.WriteLine("Part no :" + select.msp_id);
+                //this.Hide();
 
-            };
+                var data = new
+                {
+                    StationId = LocationData.IdStation,
+                    NewPartNo = select.msp_part_no,
+                    login_user = Session.Userlogin
 
-            var dataJson = JsonConvert.SerializeObject(data);
-            dynamic responseData = await api.CurPostRequestAsync("OperationUpdate/update_partNo_station/", dataJson);
-            /**/
+                };
 
-            if (responseData.Status == 1)
-            {
-                //await Task.Delay(2000);
-                qgateScanTag ScanTag = new qgateScanTag();
-                ScanTag.Show();
+                var dataJson = JsonConvert.SerializeObject(data);
+                dynamic responseData = await api.CurPostRequestAsync("OperationUpdate/update_partNo_station/", dataJson);
+                /**/
 
-                this.Hide();
+                if (responseData.Status == 1)
+                {
+                    //await Task.Delay(2000);
+                    qgateScanTag ScanTag = new qgateScanTag();
+                    ScanTag.Show();
+
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Error System : Fail Save PartNo");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Error System : Fail Save PartNo");
+                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
             }
-
-
-            //MessageBox.Show(responseData.ToString());
-
         }
 
         private void cbTest_SelectedIndexChanged(object sender, EventArgs e)
